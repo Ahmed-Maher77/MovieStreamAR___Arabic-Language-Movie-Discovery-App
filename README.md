@@ -25,18 +25,42 @@ A modern Arabic-language movie and TV series discovery web app designed to provi
 
 <hr />
 
-## 🛠️ Technologies Used  
-- **Frontend:** React, Vite, Bootstrap, Swiper.js, CSS Modules, Google Fonts
-- **State Management:** Redux Toolkit (RTK)
-- **Server State Management:** TanStack React Query
-- **Routing:** React Router DOM
-- **Authentication:** Firebase (Google Auth)
-- **API:** The Movie Database (TMDB)
-- **UI Libraries:** Framer Motion, Font Awesome, Bootstrap Icons
-- **Utilities:** Axios, dotenv, Redux Persist, js-cookie
-- **Communication:** EmailJS
-- **Performance:** Lazy loading, SWC Compiler, React Intersection Observer
-- **Deployment:** Vercel  
+## 🛠️ Technologies Used 
+
+- **Frontend**  
+  - **React + Vite** → Fast development setup with a modern React framework and build tool.  
+  - **Bootstrap** → Responsive grid system and prebuilt UI components.  
+  - **Swiper.js** → Interactive carousels and sliders.  
+  - **CSS Modules** → Scoped, maintainable component-level styling.  
+  - **Google Fonts** → Custom typography for a modern UI.  
+
+- **State Management**  
+  - **Redux Toolkit (RTK)** → Centralized state management with simplified Redux patterns.  
+  - **Redux Persist** → Persists Redux state across sessions.  
+  - **TanStack React Query** → Efficient server-state fetching, caching, and synchronization.  
+
+- **Routing & Authentication**  
+  - **React Router DOM** → Client-side navigation and route management.  
+  - **Firebase (Google Auth)** → Authentication and secure user login with Google.  
+
+- **APIs & Communication**  
+  - **TMDB API** → Provides movie data for the application.  
+  - **Axios** → HTTP client for API requests.  
+  - **dotenv** → Secure management of environment variables.  
+  - **js-cookie** → Simplified cookie handling for user sessions.  
+  - **EmailJS** → Enables contact forms and email communication.  
+
+- **UI Libraries**  
+  - **Framer Motion** → Smooth animations and transitions.  
+  - **Font Awesome & Bootstrap Icons** → Scalable icon sets for UI enhancement.  
+
+- **Performance Enhancements**  
+  - **Lazy Loading** → Loads content efficiently for performance.  
+  - **SWC Compiler** → Super-fast JavaScript/TypeScript compilation.  
+  - **React Intersection Observer** → Handles lazy loading and scroll-based animations.  
+
+- **Deployment**  
+  - **Vercel** → Cloud platform for fast and seamless deployment.   
 
 <hr />
 
@@ -60,8 +84,8 @@ Follow these steps to run the project locally:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Ahmed-Maher77/MovieApp___Arabic-Movie-Discovery-App.git
-cd MovieApp___Arabic-Movie-Discovery-App
+git clone https://github.com/Ahmed-Maher77/MovieStreamAR___Arabic-Language-Movie-Discovery-App.git
+cd MovieStreamAR___Arabic-Language-Movie-Discovery-App
 ```
 ### 2. Install Dependencies
 ```bash
