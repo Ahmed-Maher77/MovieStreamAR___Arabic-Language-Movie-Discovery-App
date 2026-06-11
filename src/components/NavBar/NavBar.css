@@ -25,6 +25,7 @@
 		transition: color 0.2s ease;
 	}
 	.navbar-toggler {
+		border: none;
 		&:focus {
 			box-shadow: 0 0 0 #0000004c;
 		}
@@ -42,6 +43,9 @@
 	.collapse {
 		.navbar-nav {
 			.nav-item {
+				.nav-link.fs-5 {
+					font-size: 1.1rem !important;
+				}
 				a {
 					color: #000;
 					&.active {

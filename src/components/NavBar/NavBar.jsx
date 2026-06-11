@@ -87,7 +87,7 @@ const NavBar = memo(() => {
 
 					{/* Navigation Links */}
 					<div
-						className={`collapse navbar-collapse mt-2`}
+						className={`collapse navbar-collapse mt-lg-0`}
 						id="navbarTogglerDemo02"
 					>
 						<NavLinks

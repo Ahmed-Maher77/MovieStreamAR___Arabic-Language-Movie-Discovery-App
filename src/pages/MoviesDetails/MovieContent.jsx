@@ -60,15 +60,8 @@ const MovieContent = ({
 	return (
 		<main className="mb-3">
 			<section className="d-flex gap-2 gap-md-3 gap-lg-4 flex-column flex-md-row align-items-md-center">
-				{/* ================= Movie Poster ================= */}
-				<MoviePoster
-					posterPath={poster_path}
-					homepage={homepage}
-					title={title}
-				/>
-
 				{/* ================= Movie Details ================= */}
-				<div className="details-info w-100">{details}</div>
+				<div className="details-info w-100 text-white rounded p-4" style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(5px)" }}>{details}</div>
 			</section>
 
 			<WatchlistButton

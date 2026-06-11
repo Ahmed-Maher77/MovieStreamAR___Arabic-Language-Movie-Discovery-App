@@ -1,4 +1,4 @@
-import DeveloperImg from "../../assets/My_Picture.jpg";
+import DeveloperImg from "../../assets/My_Picture.png";
 
 const ProfileImage = () => {
     return (

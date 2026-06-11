@@ -5,18 +5,20 @@ const NotFound = () => {
 	const navigate = useNavigate();
 
 	return (
-		<main className="text-center d-flex align-items-center" style={{ height: "calc(100vh - 65px)" }}>
-			<div className="container py-5">
-				<h1>Page Not Found</h1>
+		<main className="text-center d-flex align-items-center justify-content-center" style={{ height: "calc(100vh - 65px)", background: "var(--body-bg)" }}>
+			<div className="container py-5 bg-white rounded-4 shadow-sm p-5" style={{ maxWidth: "500px" }}>
+				<i className="fa-solid fa-triangle-exclamation text-warning mb-4" style={{ fontSize: "5rem" }}></i>
+				<h1 className="fw-bold mb-3">الصفحة غير موجودة</h1>
+				<p className="text-muted mb-4">عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها.</p>
 
                 {/* Go Back Button */}
 				<button
-					className="btn btn-dark px-4 py-2 rounded-5 mt-4 d-flex gap-3 fs-5 mx-auto align-items-center"
+					className="btn btn-main px-4 py-2 rounded-5 mt-2 d-flex gap-3 fs-5 mx-auto align-items-center"
 					onClick={() => navigate("/")}
-					aria-label="Go back to home page"
+					aria-label="العودة للصفحة الرئيسية"
 				>
-					Go Back
-					<span className="fa-solid fa-arrow-left"></span>
+					العودة للرئيسية
+					<span className="fa-solid fa-house mt-1"></span>
 				</button>
 			</div>
 		</main>

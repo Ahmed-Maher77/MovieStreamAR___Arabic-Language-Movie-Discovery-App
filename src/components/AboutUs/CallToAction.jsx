@@ -1,0 +1,59 @@
+import { motion } from "framer-motion";
+
+const CallToAction = () => {
+	return (
+		<section className="w-100 py-5 position-relative overflow-hidden" style={{ zIndex: 10 }}>
+			{/* Glow Background */}
+			<div className="cta-gradient-bg"></div>
+			
+			<div className="container position-relative my-5">
+				<motion.div 
+					initial={{ opacity: 0, scale: 0.95 }}
+					whileInView={{ opacity: 1, scale: 1 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6 }}
+					className="text-center"
+					style={{ padding: "4rem 2rem" }}
+				>
+					<h2 className="display-5 fw-bold text-white mb-4">
+						جاهز لتحويل فكرتك إلى <br className="d-none d-md-block" />
+						<span className="gradient-text">منتج رقمي احترافي؟</span>
+					</h2>
+					<p className="fs-5 text-muted-custom mb-5 mx-auto" style={{ maxWidth: "650px" }}>
+						سواء كنت تبحث عن مطور لبناء تطبيقك القادم، أو ترغب في استشارة تقنية لمشروعك الحالي، أنا هنا للمساعدة.
+					</p>
+
+					<div className="d-grid d-md-flex justify-content-md-center gap-3">
+						<a 
+							href={`https://wa.me/+201150383416?text=${encodeURIComponent("مرحباً أحمد، لقد زرت موقعك الشخصي وأود التحدث معك بخصوص مشروع جديد.")}`}
+							target="_blank"
+							rel="noreferrer"
+							className="btn btn-main fw-bold px-5 py-3"
+							style={{ fontSize: "1.1rem", borderRadius: "12px" }}
+						>
+							ابدأ مشروعك الآن
+						</a>
+						<a 
+							href={`mailto:ahmedmaher.dev1@gmail.com?subject=${encodeURIComponent("تواصل بخصوص مشروع جديد")}&body=${encodeURIComponent("مرحباً أحمد،\n\nأود التحدث معك بخصوص تفاصيل مشروع جديد...\n\nتحياتي،")}`}
+							className="btn text-white fw-bold px-5 py-3"
+							style={{ 
+								fontSize: "1.1rem", 
+								borderRadius: "12px",
+								background: "rgba(255, 255, 255, 0.05)",
+								border: "1px solid rgba(255, 255, 255, 0.1)",
+								backdropFilter: "blur(10px)",
+								transition: "all 0.3s ease"
+							}}
+							onMouseOver={(e) => e.target.style.background = "rgba(255, 255, 255, 0.1)"}
+							onMouseOut={(e) => e.target.style.background = "rgba(255, 255, 255, 0.05)"}
+						>
+							أرسل بريداً إلكترونياً
+						</a>
+					</div>
+				</motion.div>
+			</div>
+		</section>
+	);
+};
+
+export default CallToAction;

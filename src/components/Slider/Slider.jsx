@@ -28,8 +28,11 @@ const Slider = () => {
 			<Swiper
 				modules={[EffectFade, Autoplay, Navigation, Pagination]}
 				effect="fade"
+				fadeEffect={{ crossFade: true }}
+				speed={1200}
 				spaceBetween={0}
 				slidesPerView={1}
+				loop={true}
 				autoplay={{
 					delay: 5000,
 					disableOnInteraction: false,
@@ -41,51 +44,37 @@ const Slider = () => {
 				pagination={{
 					clickable: true,
 					el: ".swiper-pagination",
+					dynamicBullets: true,
 				}}
 				className="hero-swiper"
 			>
-				{slidesData.map((movie, index) => (
+				{slidesData.map((movie, index) => {
+					const bgUrl = movie.poster.startsWith('http') ? movie.poster : `https://image.tmdb.org/t/p/original${movie.poster}`;
+					return (
 					<SwiperSlide key={index}>
-						<div className="slide-content">
+						<div 
+							className="slide-content"
+							style={{
+								backgroundImage: `
+									linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 20%),
+									linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0) 70%),
+									url(${bgUrl})`,
+								backgroundSize: "cover",
+								backgroundPosition: "center",
+								backgroundRepeat: "no-repeat"
+							}}
+						>
 							<div className="container h-100">
 								<div className="row h-100 align-items-center">
-									<div className="col-lg-6">
-										<motion.figure
-											className="poster-wrapper"
-											onClick={() => navigate(`/movies/${movie.id}`)}
-											variants={HomeSliderPosterVariants}
-											initial="initial"
-											animate="animate"
-											exit="exit"
-											tabIndex={0}
-											role="button"
-											aria-label={`مشاهدة تفاصيل الفيلم: ${movie.title}`}
-										>
-											<img
-												src={`https://image.tmdb.org/t/p/w500${movie.poster}`}
-												alt={`${movie.title} Poster`}
-												className="movie-poster"
-											/>
-											<div className="poster-overlay">
-												<span className="see-details-btn">
-													<span className="fa-solid fa-arrow-right"></span>
-													اقرأ التفاصيل
-												</span>
-											</div>
-										</motion.figure>
-									</div>
-									<div className="col-lg-6">
+									<div className="col-lg-8 col-md-10">
 										<SliderCaption movie={movie} />
 									</div>
 								</div>
 							</div>
 						</div>
 					</SwiperSlide>
-				))}
-
-				{/* Navigation */}
-				<div className="swiper-button-prev"></div>
-				<div className="swiper-button-next"></div>
+					);
+				})}
 
 				{/* Pagination */}
 				<div className="swiper-pagination"></div>
