@@ -3,9 +3,28 @@ import PropTypes from "prop-types";
 import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { HomeSliderHeadingVariants, HomeSliderInfoVariants } from "../../utils/Animations_Variants/Animations_Variants";
 
-const SliderCaption = ({ movie }) => {
+const containerVariants = {
+	initial: { opacity: 0 },
+	animate: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.2,
+			delayChildren: 0.2,
+		},
+	},
+};
+
+const itemVariants = {
+	initial: { opacity: 0, y: 30 },
+	animate: { 
+		opacity: 1, 
+		y: 0, 
+		transition: { duration: 0.6, ease: "easeOut" } 
+	},
+};
+
+const SliderCaption = ({ movie, isActive }) => {
 	const navigate = useNavigate();
 	const isLargeScreen = useSelector((state) => state.isLargeScreen);
 
@@ -15,18 +34,20 @@ const SliderCaption = ({ movie }) => {
 	);
 
 	return (
-		<div className="carousel-caption text-end col-12 position-static" style={{ paddingBottom: "100px" }}>
+		<motion.div 
+			className="carousel-caption text-end col-12 position-static" 
+			style={{ paddingBottom: "100px" }}
+			initial="initial"
+			animate={isActive ? "animate" : "initial"}
+			variants={containerVariants}
+		>
 			<div className="container px-0">
 				
 				{/* Movie Title */}
 				<motion.h1 
 					className="fw-bold mb-3 text-white" 
-					style={{ fontSize: "4.5rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
-					key="home-slider-heading"
-					variants={HomeSliderHeadingVariants}
-					initial="initial"
-					animate="animate"
-					exit="exit"
+					style={{ fontSize: "clamp(2.5rem, 6vw + 1rem, 4.5rem)", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
+					variants={itemVariants}
 				>
 					{movie.title}
 				</motion.h1>
@@ -34,10 +55,7 @@ const SliderCaption = ({ movie }) => {
 				{/* Metadata Pills */}
 				<motion.div 
 					className="d-flex flex-wrap gap-2 mb-4 align-items-center"
-					variants={HomeSliderHeadingVariants}
-					initial="initial"
-					animate="animate"
-					exit="exit"
+					variants={itemVariants}
 				>
 					<span className="badge bg-dark border border-secondary px-3 py-2 fs-6 opacity-75">+18</span>
 					<span className="badge bg-dark border border-secondary px-3 py-2 fs-6 opacity-75">2 ساعة 15 دقيقة</span>
@@ -50,11 +68,7 @@ const SliderCaption = ({ movie }) => {
 				<motion.p 
 					className="fs-5 text-light mb-4"
 					style={{ maxWidth: "550px", lineHeight: "1.6", opacity: "0.85", textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-					key="home-slider-overview"
-					variants={HomeSliderHeadingVariants}
-					initial="initial"
-					animate="animate"
-					exit="exit"
+					variants={itemVariants}
 				>
 					{trimmedOverview}
 				</motion.p>
@@ -62,11 +76,7 @@ const SliderCaption = ({ movie }) => {
 				{/* Buttons Row */}
 				<motion.div 
 					className="d-flex gap-3 mb-4"
-					key="home-slider-btns"
-					variants={HomeSliderInfoVariants}
-					initial="initial"
-					animate="animate"
-					exit="exit"
+					variants={itemVariants}
 				>
 					<button 
 						className="slider-btn-primary"
@@ -86,11 +96,7 @@ const SliderCaption = ({ movie }) => {
 				{/* Footer Stats */}
 				<motion.div 
 					className="d-flex align-items-center gap-4 mt-4" 
-					key="home-slider-stats"
-					variants={HomeSliderInfoVariants}
-					initial="initial"
-					animate="animate"
-					exit="exit"
+					variants={itemVariants}
 				>
 					<div className="d-flex flex-column align-items-start">
 						<span className="fs-4 fw-bold text-white">{movie.view}</span>
@@ -104,7 +110,7 @@ const SliderCaption = ({ movie }) => {
 				</motion.div>
 
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

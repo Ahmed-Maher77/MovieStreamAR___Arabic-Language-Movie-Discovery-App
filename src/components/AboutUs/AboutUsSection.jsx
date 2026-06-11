@@ -6,10 +6,10 @@ import "./AboutUsSection.css";
 
 const AboutUsSection = () => {
 	const features = [
-		"تطوير تطبيقات الويب",
-		"تطوير تطبيقات الجوال",
-		"تطوير تطبيقات سطح المكتب",
-		"تصميم واجهات المستخدم",
+		{ title: "تطوير تطبيقات الويب", icon: "fa-solid fa-globe" },
+		{ title: "تطوير تطبيقات الجوال", icon: "fa-solid fa-mobile-screen-button" },
+		{ title: "تطوير تطبيقات سطح المكتب", icon: "fa-solid fa-desktop" },
+		{ title: "تصميم واجهات المستخدم", icon: "fa-solid fa-pen-nib" },
 	];
 
 	return (

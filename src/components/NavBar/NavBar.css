@@ -87,6 +87,10 @@
 .login-btn {
 	@media (min-width: 992px) {
 		font-size: 0.9rem !important;
+		border-radius: 20px !important;
+	}
+	@media (max-width: 991px) {
+		border-radius: 8px !important;
 	}
 }
 

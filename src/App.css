@@ -183,3 +183,10 @@ body {
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
 }
+
+/* Custom padding for small screens */
+@media (max-width: 768px) {
+	.container, .container-fluid {
+		padding-inline: 1.5rem !important;
+	}
+}

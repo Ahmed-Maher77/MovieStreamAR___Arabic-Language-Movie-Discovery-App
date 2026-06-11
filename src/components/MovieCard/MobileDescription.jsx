@@ -15,7 +15,7 @@ const MobileDescription = memo(({ title, rate }) => {
 	}, []);
 
 	return (
-		<figcaption className="card-body py-3 position-absolute bottom-0 w-100 px-4 d-flex justify-content-center align-items-center d-lg-none" aria-label={`Movie details for ${title}`}>
+		<figcaption className="card-body pt-5 pb-3 position-absolute bottom-0 w-100 px-4 d-flex justify-content-center align-items-center d-lg-none" aria-label={`Movie details for ${title}`}>
 			<div>
 				{/* Movie Title */}
 				<h3 className="card-title text-center fs-5" style={{fontSize: isSmallScreen ? "1.1rem" : "1.2rem"}}>

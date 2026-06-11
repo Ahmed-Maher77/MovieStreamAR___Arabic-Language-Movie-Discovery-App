@@ -34,7 +34,13 @@ const NavBar = memo(() => {
 	// Close mobile menu
 	const closeMenu = () => {
 		setIsMenuOpen(false);
-		closeBtnRef.current?.click();
+		const toggler = closeBtnRef.current;
+		const collapseMenu = document.getElementById("navbarTogglerDemo02");
+		if (toggler && window.getComputedStyle(toggler).display !== "none") {
+			if (collapseMenu && collapseMenu.classList.contains("show")) {
+				toggler.click();
+			}
+		}
 	};
 
 	// Close menu on logo click

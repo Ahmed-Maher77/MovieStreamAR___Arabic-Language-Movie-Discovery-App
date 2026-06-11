@@ -60,7 +60,6 @@ const MoviesDetails = () => {
 		genres = [],
 		spoken_languages = [],
 		overview,
-		credits,
 	} = movieData;
     const title = movieData.title || movieData.name;
 
@@ -84,20 +83,13 @@ const MoviesDetails = () => {
 		{ label: "البلد", value: countryName },
 		{ label: "النوع", value: formattedGenres },
 		{ label: "اللغات المتاحة", value: formattedLanguages },
-		{ label: "الممثلين", value: credits?.cast?.slice(0, 5).map(actor => actor.name).join('، ') || "غير متوفر" },
 	];
 
 
 	return (
 		<motion.div
 			className="Movies-Details overflow-hidden"
-			style={{ 
-				minHeight: "calc(100vh - 75px)",
-				backgroundImage: poster_path ? `linear-gradient(to right, rgba(13, 13, 13, 0.9) 20%, rgba(13, 13, 13, 0.7)), url(https://image.tmdb.org/t/p/original${poster_path})` : "none",
-				backgroundSize: "cover",
-				backgroundPosition: "top center",
-				backgroundAttachment: "fixed"
-			}}
+			style={{ minHeight: "calc(100vh - 75px)" }}
 			key="Movies-Details"
 			variants={moviesDetailsPageVariants}
 			initial="initial"

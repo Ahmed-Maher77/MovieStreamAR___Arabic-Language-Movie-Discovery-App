@@ -20,7 +20,7 @@ const Slider = () => {
 		<div
 			className="hero-slider"
 			style={{
-				height: "calc(100vh - 73px)",
+				height: "calc(100vh - 64px)",
 				minHeight: "630px",
 				maxHeight: "900px",
 			}}
@@ -52,26 +52,29 @@ const Slider = () => {
 					const bgUrl = movie.poster.startsWith('http') ? movie.poster : `https://image.tmdb.org/t/p/original${movie.poster}`;
 					return (
 					<SwiperSlide key={index}>
-						<div 
-							className="slide-content"
-							style={{
-								backgroundImage: `
-									linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 20%),
-									linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0) 70%),
-									url(${bgUrl})`,
-								backgroundSize: "cover",
-								backgroundPosition: "center",
-								backgroundRepeat: "no-repeat"
-							}}
-						>
-							<div className="container h-100">
-								<div className="row h-100 align-items-center">
-									<div className="col-lg-8 col-md-10">
-										<SliderCaption movie={movie} />
+						{({ isActive }) => (
+							<div 
+								className="slide-content"
+								style={{
+									backgroundImage: `
+										linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 20%),
+										linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0) 70%),
+										url(${bgUrl})`,
+									backgroundSize: "cover",
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundAttachment: "fixed"
+								}}
+							>
+								<div className="container h-100">
+									<div className="row h-100 align-items-center">
+										<div className="col-lg-8 col-md-10">
+											<SliderCaption movie={movie} isActive={isActive} />
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						)}
 					</SwiperSlide>
 					);
 				})}

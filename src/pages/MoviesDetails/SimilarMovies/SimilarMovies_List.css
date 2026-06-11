@@ -15,16 +15,16 @@
 .SimilarMovies_List .card {
     border: none;
     background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 0 4px 15px rgb(0 0 0 / 14%);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
     overflow: hidden;
     position: relative;
     height: 100%;
 }
 
 .SimilarMovies_List .card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(188, 97, 50, 0.15);
 }
 
 .SimilarMovies_List .card::before {
@@ -34,7 +34,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background: linear-gradient(90deg, #e37941, #bc6132, #a55228);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }

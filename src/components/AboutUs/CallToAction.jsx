@@ -23,26 +23,30 @@ const CallToAction = () => {
 						سواء كنت تبحث عن مطور لبناء تطبيقك القادم، أو ترغب في استشارة تقنية لمشروعك الحالي، أنا هنا للمساعدة.
 					</p>
 
-					<div className="d-grid d-md-flex justify-content-md-center gap-3">
+					<div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 w-100">
 						<a 
 							href={`https://wa.me/+201150383416?text=${encodeURIComponent("مرحباً أحمد، لقد زرت موقعك الشخصي وأود التحدث معك بخصوص مشروع جديد.")}`}
 							target="_blank"
 							rel="noreferrer"
-							className="btn btn-main fw-bold px-5 py-3"
-							style={{ fontSize: "1.1rem", borderRadius: "12px" }}
+							className="btn btn-main fw-bold px-5 py-3 w-100 text-center"
+							style={{ fontSize: "1.1rem", borderRadius: "12px", maxWidth: "300px", display: "flex", justifyContent: "center", alignItems: "center" }}
 						>
 							ابدأ مشروعك الآن
 						</a>
 						<a 
 							href={`mailto:ahmedmaher.dev1@gmail.com?subject=${encodeURIComponent("تواصل بخصوص مشروع جديد")}&body=${encodeURIComponent("مرحباً أحمد،\n\nأود التحدث معك بخصوص تفاصيل مشروع جديد...\n\nتحياتي،")}`}
-							className="btn text-white fw-bold px-5 py-3"
+							className="btn text-white fw-bold px-5 py-3 w-100 text-center"
 							style={{ 
 								fontSize: "1.1rem", 
 								borderRadius: "12px",
+								maxWidth: "300px",
 								background: "rgba(255, 255, 255, 0.05)",
 								border: "1px solid rgba(255, 255, 255, 0.1)",
 								backdropFilter: "blur(10px)",
-								transition: "all 0.3s ease"
+								transition: "all 0.3s ease",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center"
 							}}
 							onMouseOver={(e) => e.target.style.background = "rgba(255, 255, 255, 0.1)"}
 							onMouseOut={(e) => e.target.style.background = "rgba(255, 255, 255, 0.05)"}
