@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 
 /* ===================== Global Variables ===================== */
 :root {
-	direction: rtl;
 	--main-c: #bc6132;
 	--white-c: #ffffff;
 	--white-fixed-c: #ffffff;
@@ -17,7 +16,7 @@
 
 /* ===================== Body ===================== */
 body {
-	font-family: "Almarai", sans-serif;
+	font-family: "Cairo", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	overflow-x: hidden;
@@ -69,14 +68,22 @@ body {
 
 /* Buttons */
 .btn-main {
-	background-color: var(--main-c);
-	color: var(--white-c);
-	border-color: var(--main-c);
-	padding: 12px 20px;
+	background: linear-gradient(180deg, #d6713b 0%, #bc6132 100%);
+	border: 1px solid #b3592d;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+	color: white;
+	padding: 0.8rem 1.5rem;
+	border-radius: 8px;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: fit-content;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 	&:hover {
-		background-color: transparent;
-		border-color: #cc5114;
-		color: var(--main-c);
+		background: linear-gradient(180deg, #e37941 0%, #c46635 100%);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 12px rgba(188, 97, 50, 0.3);
+		color: white;
 	}
 }
 .login-btn {
@@ -174,4 +181,11 @@ body {
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
+}
+
+/* Custom padding for small screens */
+@media (max-width: 768px) {
+	.container, .container-fluid {
+		padding-inline: 1.5rem !important;
+	}
 }

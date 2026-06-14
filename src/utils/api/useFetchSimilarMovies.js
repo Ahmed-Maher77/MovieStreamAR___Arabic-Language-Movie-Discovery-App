@@ -1,7 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+import { useTranslation } from "react-i18next";
+
 function useFetchSimilarMovies(dataType, page, id, limit = null) {
+    const { i18n } = useTranslation();
+    const langParam = i18n.language === "ar" ? "ar" : "en-US";
     const apikey = import.meta.env.VITE_API_KEY;
 
     const fetchMovies = async () => {
@@ -14,8 +18,8 @@ function useFetchSimilarMovies(dataType, page, id, limit = null) {
         try {
             const res = await axios.get(
                 dataType == "movies"?
-                `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apikey}&language=ar&page=${page}` :
-                `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${apikey}&language=ar&page=${page}`
+                `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apikey}&language=${langParam}&page=${page}` :
+                `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${apikey}&language=${langParam}&page=${page}`
             );
 
             console.log("Fetched Similar Movies Data:", res.data);
@@ -38,7 +42,7 @@ function useFetchSimilarMovies(dataType, page, id, limit = null) {
     };
     
     const { data, isLoading, error } = useQuery({
-        queryKey: ["similar_movies", page, id, limit],
+        queryKey: ["similar_movies", page, id, limit, langParam],
         queryFn: fetchMovies,
         staleTime: 60000 * 10, // 10 minute stale time
         keepPreviousData: true, // Keeps old data while fetching new
