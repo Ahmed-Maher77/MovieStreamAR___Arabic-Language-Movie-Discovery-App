@@ -71,10 +71,6 @@ const SliderCaption = ({ movie, isActive }) => {
 					className="fw-bold mb-3 text-white" 
 					style={{ fontSize: "clamp(2.5rem, 6vw + 1rem, 4.5rem)", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
 					variants={itemVariants}
-				<motion.h1 
-					className="fw-bold mb-3 text-white" 
-					style={{ fontSize: "clamp(2.5rem, 6vw + 1rem, 4.5rem)", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
-					variants={itemVariants}
 				>
 					{movie.title}
 				</motion.h1>
@@ -93,9 +89,6 @@ const SliderCaption = ({ movie, isActive }) => {
 
 				{/* Movie Overview */}
 				<motion.p 
-					className="fs-5 text-light mb-4"
-					style={{ maxWidth: "550px", lineHeight: "1.6", opacity: "0.85", textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-					variants={itemVariants}
 					className="fs-5 text-light mb-4"
 					style={{ maxWidth: "550px", lineHeight: "1.6", opacity: "0.85", textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
 					variants={itemVariants}
@@ -142,7 +135,6 @@ const SliderCaption = ({ movie, isActive }) => {
 
 
 			</div>
-		</motion.div>
 		</motion.div>
 	);
 };
