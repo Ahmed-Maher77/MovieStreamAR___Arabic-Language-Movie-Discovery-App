@@ -6,11 +6,6 @@ import ProfessionalOverview from "../../components/AboutUs/ProfessionalOverview"
 import ValueProposition from "../../components/AboutUs/ValueProposition";
 import ContactHub from "../../components/AboutUs/ContactHub";
 import CallToAction from "../../components/AboutUs/CallToAction";
-import HeroSection from "../../components/AboutUs/HeroSection";
-import ProfessionalOverview from "../../components/AboutUs/ProfessionalOverview";
-import ValueProposition from "../../components/AboutUs/ValueProposition";
-import ContactHub from "../../components/AboutUs/ContactHub";
-import CallToAction from "../../components/AboutUs/CallToAction";
 
 const AboutUs = () => {
 	const { i18n } = useTranslation();
