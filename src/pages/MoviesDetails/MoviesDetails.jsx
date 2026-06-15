@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -70,6 +71,11 @@ const MoviesDetails = () => {
 		overview,
 	} = movieData;
     const title = movieData.title || movieData.name;
+
+	useEffect(() => {
+		document.title = `${title} - MovieStreamAR`;
+		return () => { document.title = "MovieStreamAR"; };
+	}, [title]);
 
 	// Formatters
 	const formattedGenres = formatList(genres, "name");
