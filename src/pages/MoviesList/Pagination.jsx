@@ -23,7 +23,7 @@ const Pagination = ({setPage, page, startPage, endPage, totalPages}) => {
             {/* =================== Page Numbers (Limited to range) =================== */}
             {startPage > 1 && <button className="btn btn-outline-primary" onClick={() => handleSetPage(1)}>1</button>}
             {startPage > 2 && <span>...</span>} {/* Show ellipsis if necessary */}
-            {[...Array(endPage - startPage + 1)].map((_, i) => {
+            {[...Array(Math.max(0, endPage - startPage + 1))].map((_, i) => {
                 const pageNumber = startPage + i;
                 return (
                     <button 

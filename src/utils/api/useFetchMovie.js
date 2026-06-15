@@ -7,15 +7,24 @@ function useFetchMovie(id, comingFrom) {
 	const apikey = import.meta.env.VITE_API_KEY;
 
 	const fetchMovieDetails = async () => {
+		const movieApi = `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=${langParam}&append_to_response=credits`;
+		const tvApi = `https://api.themoviedb.org/3/tv/${id}?api_key=${apikey}&language=${langParam}&append_to_response=credits`;
+		const primaryApi = comingFrom === "moviesPage" ? movieApi : tvApi;
+		const fallbackApi = comingFrom === "moviesPage" ? tvApi : movieApi;
+
 		try {
-			const movieApi = `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=${langParam}&append_to_response=credits`;
-			const tvApi = `https://api.themoviedb.org/3/tv/${id}?api_key=${apikey}&language=${langParam}&append_to_response=credits`;
-			const res = await axios.get(comingFrom === "moviesPage" ? movieApi : tvApi);
+			const res = await axios.get(primaryApi);
 			return res.data;
 		} catch (error) {
-			throw new Error(
-				"An Error occured while fetching the user's data: " + error.message
-			);
+			try {
+				// Fallback to fetch from the alternate endpoint (e.g. if media type is wrong or route mismatch)
+				const resFallback = await axios.get(fallbackApi);
+				return resFallback.data;
+			} catch (fallbackError) {
+				throw new Error(
+					"An Error occured while fetching movie data: " + fallbackError.message
+				);
+			}
 		}
 	};
 	const { data, isLoading, error } = useQuery({

@@ -47,6 +47,14 @@ function App() {
 							),
 						},
 						{
+							path: "/tv-series/:id",
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<MoviesDetails />
+								</Suspense>
+							),
+						},
+						{
 							path: "/tv-series", 
 							element: (
 								<Suspense fallback={<MainLoader />}>

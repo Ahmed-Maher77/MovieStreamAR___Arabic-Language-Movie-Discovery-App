@@ -25,7 +25,7 @@ const MovieCard = ({
 
 	return (
 		<div className="col" style={{ maxWidth: "350px", minWidth: "300px" }}>
-			<div className="card h-100 watchlist-card position-relative">
+			<div className="card h-100 watchlist-card position-relative" style={{ cursor: "pointer" }} onClick={handleMovieClick}>
 				{/* Movie Poster */}
 				<img
 					src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -34,7 +34,7 @@ const MovieCard = ({
 				/>
 
 				{/* Movie Link Icon */}
-				<div className="movie-link-icon" onClick={handleMovieClick}>
+				<div className="movie-link-icon">
 					<i className="fas fa-external-link-alt"></i>
 				</div>
 
@@ -49,7 +49,7 @@ const MovieCard = ({
 				<div className="card-footer d-flex justify-content-between align-items-center gap-2">
 					<button
 						className="btn btn-danger w-100 d-flex justify-content-center align-items-center gap-2"
-						onClick={() => onRemove(movie.id)}
+						onClick={(e) => { e.stopPropagation(); onRemove(movie.id); }}
 						disabled={isRemoving}
 					>
 						{isRemoving ? (
@@ -69,7 +69,7 @@ const MovieCard = ({
 						className={`btn ${
 							movie.isWatched ? "btn-success" : "btn-outline-secondary"
 						} ms-2`}
-						onClick={onToggleWatched}
+						onClick={(e) => { e.stopPropagation(); onToggleWatched(); }}
 						disabled={isTogglingWatched}
 						aria-label={movie.isWatched ? "مشاهَد" : "غير مشاهَد"}
 					>

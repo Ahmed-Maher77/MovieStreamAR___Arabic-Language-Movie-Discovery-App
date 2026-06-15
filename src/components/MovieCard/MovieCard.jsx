@@ -23,10 +23,9 @@ const MovieCard = memo(
 
 		// Prevents unnecessary re-renders of the function
 		const handleNavigation = useCallback(() => {
-			const from = pathname.includes("/tv-series")
-				? "tvSeriesPage"
-				: "moviesPage";
-			navigate(`/movies/${id}`, { state: { from } });
+			const isTv = pathname.includes("/tv-series");
+			const from = isTv ? "tvSeriesPage" : "moviesPage";
+			navigate(isTv ? `/tv-series/${id}` : `/movies/${id}`, { state: { from } });
 		}, [navigate, id, pathname]);
 
 		// Ensure state updates only when necessary

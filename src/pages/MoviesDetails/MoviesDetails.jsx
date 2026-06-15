@@ -14,12 +14,17 @@ import useFetchSimilarMovies from "../../utils/api/useFetchSimilarMovies";
 
 const MoviesDetails = () => {
 	const { id } = useParams();
-	const { state } = useLocation();
+	const { state, pathname } = useLocation();
 
-	const comingFrom = state?.from || "moviesPage";
-	const { data: movieData, isLoading, error } = useFetchMovie(id, comingFrom);
+	// Determine initial type from location state or URL path prefix
+	const initialComingFrom = state?.from || (pathname.startsWith("/tv-series") ? "tvSeriesPage" : "moviesPage");
+	const { data: movieData, isLoading, error } = useFetchMovie(id, initialComingFrom);
 
-    const dataType = comingFrom === "moviesPage" ? "movies" : "tv";
+	// Detect if it is actually a movie or tv series from the resolved data (TMDB tv objects have 'name' instead of 'title')
+	const isTvShow = movieData ? (!movieData.title && !!movieData.name) : (initialComingFrom === "tvSeriesPage");
+	const dataType = isTvShow ? "tv" : "movies";
+	const comingFrom = isTvShow ? "tvSeriesPage" : "moviesPage";
+
 	const { data: similarMovies, isLoading_SimilarMovies, error_SimilarMovies } = useFetchSimilarMovies(dataType, 1, id);
 
 	const { t } = useTranslation();

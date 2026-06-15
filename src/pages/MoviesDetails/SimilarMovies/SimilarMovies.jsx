@@ -36,20 +36,21 @@ const SimilarMovies = ({ data, isLoading, error, comingFrom }) => {
     }
 
     // Limit data to show only visible items
+    const results = data?.results || [];
     const limitedData = {
         ...data,
-        results: data.results.slice(0, visibleCount)
+        results: results.slice(0, visibleCount)
     };
 
     const handleShowMore = () => {
-        setVisibleCount(prev => Math.min(prev + itemsPerLoad, data.results.length));
+        setVisibleCount(prev => Math.min(prev + itemsPerLoad, results.length));
     };
 
     const handleShowLess = () => {
         setVisibleCount(5);
     };
 
-    const hasMoreItems = visibleCount < data.results.length;
+    const hasMoreItems = visibleCount < results.length;
     const hasHiddenItems = visibleCount > 5;
 
     return (
@@ -58,7 +59,7 @@ const SimilarMovies = ({ data, isLoading, error, comingFrom }) => {
                 
             <SimilarMovies_List data={limitedData} comingFrom={comingFrom} />
             
-            {data.results.length > 5 && (
+            {results.length > 5 && (
                 <div className="text-center">
                     {hasMoreItems ? (
                         <button 
