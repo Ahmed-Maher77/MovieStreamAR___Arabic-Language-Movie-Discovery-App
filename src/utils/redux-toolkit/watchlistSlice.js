@@ -64,22 +64,46 @@ const watchlistSlice = createSlice({
 				state.error = action.error.message;
 			})
 			// Add to watchlist
+			.addCase(addToWatchlist.pending, (state) => {
+				state.loading = true;
+			})
 			.addCase(addToWatchlist.fulfilled, (state, action) => {
+				state.loading = false;
 				state.items.push(action.payload);
 			})
+			.addCase(addToWatchlist.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message;
+			})
 			// Remove from watchlist
+			.addCase(removeFromWatchlist.pending, (state) => {
+				state.loading = true;
+			})
 			.addCase(removeFromWatchlist.fulfilled, (state, action) => {
+				state.loading = false;
 				state.items = state.items.filter(
 					(movie) => movie.id !== action.payload
 				);
 			})
+			.addCase(removeFromWatchlist.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message;
+			})
 			// Update movie status
+			.addCase(updateMovieStatus.pending, (state) => {
+				state.loading = true;
+			})
 			.addCase(updateMovieStatus.fulfilled, (state, action) => {
+				state.loading = false;
 				const { movieId, isWatched } = action.payload;
 				const movie = state.items.find((movie) => movie.id === movieId);
 				if (movie) {
 					movie.isWatched = isWatched;
 				}
+			})
+			.addCase(updateMovieStatus.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message;
 			});
 	},
 });

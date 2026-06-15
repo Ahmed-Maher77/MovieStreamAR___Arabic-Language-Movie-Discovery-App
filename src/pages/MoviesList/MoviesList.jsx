@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { setSearchByValue } from "../../utils/redux-toolkit/searchMovies_Slice";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import useFetchAllMovies from "../../utils/api/useFetchAllMovies";
@@ -12,6 +13,7 @@ import { moviesListPageVariants } from "../../utils/Animations_Variants/Animatio
 import AnimatedScrollToTop from "../../common/AnimatedScrollToTop";
 
 const MoviesList = () => {
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const reduxSearchQuery = useSelector(
 		(state) => state.search_movies.searchByValue
@@ -95,7 +97,7 @@ const MoviesList = () => {
 				className="d-flex justify-content-center align-items-center"
 				style={{ minHeight: "calc(100vh - 73px)" }}
 			>
-				<Loader title="...Loading Movies" aria-live="polite" />
+				<Loader title={t("loading_movies")} aria-live="polite" />
 			</div>
 		);
 	}
@@ -107,7 +109,7 @@ const MoviesList = () => {
 				className="text-center my-5"
 				style={{ minHeight: "calc(100vh - 400px)" }}
 			>
-				<h2>Something went wrong</h2>
+				<h2>{t("error_general")}</h2>
 				<span className="red-color">{hasError}</span>
 			</div>
 		);
@@ -141,7 +143,7 @@ const MoviesList = () => {
 						))
 					) : (
 						<div className="text-center my-5">
-							<h2>لا يوجد أفلام...</h2>
+							<h2>{t("no_movies")}</h2>
 						</div>
 					)}
 				</main>

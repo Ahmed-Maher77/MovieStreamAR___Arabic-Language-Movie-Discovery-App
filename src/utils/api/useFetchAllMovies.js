@@ -29,7 +29,6 @@ function useFetchAllMovies(page) {
 	});
 	
 	if (!page || page < 1) {
-		console.error("Invalid page number:", page);
 		return;
 	}
 

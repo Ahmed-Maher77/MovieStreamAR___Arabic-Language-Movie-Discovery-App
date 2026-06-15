@@ -1,10 +1,12 @@
+import { useTranslation } from "react-i18next";
 import Loader from "./Loader";
 import "./Loader.css"
 
 const MainLoader = () => {
+	const { t } = useTranslation();
 	return (
 		<div className="MainLoader">
-			<Loader text="Loading..." />
+			<Loader title={t("loading")} />
 		</div>
 	);
 };

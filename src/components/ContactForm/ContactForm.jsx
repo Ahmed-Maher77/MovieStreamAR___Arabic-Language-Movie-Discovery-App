@@ -1,14 +1,17 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 import "./ContactForm.css";
 
 const ContactForm = () => {
+	const { t, i18n } = useTranslation();
 	const form = useRef();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const websiteUrl = "https://movie-discovery-app-gamma.vercel.app/";
 	const websiteName = "MovieApp - Movie Discovery App (Arabic)";
+	const isRTL = i18n.language === "ar";
 
 	const sendEmails = async (e) => {
 		e.preventDefault();
@@ -44,16 +47,15 @@ const ContactForm = () => {
 				}
 			);
 
-			toast.success("تم إرسال الرسالة بنجاح!", {
+			toast.success(t("contact_success"), {
 				position: "top-center",
-				rtl: true,
+				rtl: isRTL,
 			});
 			form.current.reset();
 		} catch (error) {
-			console.error("Error sending emails:", error);
-			toast.error("حدث خطأ أثناء إرسال الرسالة", {
+			toast.error(t("contact_error"), {
 				position: "top-center",
-				rtl: true,
+				rtl: isRTL,
 			});
 		} finally {
 			setIsSubmitting(false);
@@ -64,13 +66,13 @@ const ContactForm = () => {
 		<section className="contact-section">
 			<div className="container">
 				<div className="contact-content">
-					<h2 className="section-title text-center mb-5">تواصل معنا</h2>
+					<h2 className="section-title text-center mb-5">{t("contact_us")}</h2>
 					<form ref={form} onSubmit={sendEmails} className="contact-form">
 						<div className="form-group">
 							<input
 								type="text"
 								name="user_name"
-								placeholder="الاسم"
+								placeholder={t("contact_name")}
 								required
 							/>
 						</div>
@@ -78,7 +80,7 @@ const ContactForm = () => {
 							<input
 								type="email"
 								name="user_email"
-								placeholder="البريد الإلكتروني"
+								placeholder={t("contact_email")}
 								required
 							/>
 						</div>
@@ -86,14 +88,14 @@ const ContactForm = () => {
 							<input
 								type="text"
 								name="subject"
-								placeholder="الموضوع"
+								placeholder={t("contact_subject")}
 								required
 							/>
 						</div>
 						<div className="form-group">
 							<textarea
 								name="message"
-								placeholder="الرسالة"
+								placeholder={t("contact_message")}
 								required
 							></textarea>
 						</div>
@@ -104,7 +106,7 @@ const ContactForm = () => {
 							className="submit-btn"
 							disabled={isSubmitting}
 						>
-							{isSubmitting ? "جاري الإرسال..." : "إرسال"}
+							{isSubmitting ? t("contact_sending") : t("contact_send")}
 						</button>
 					</form>
 				</div>

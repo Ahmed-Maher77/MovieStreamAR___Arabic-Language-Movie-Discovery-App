@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import useFetchTrendingMovies from "../../utils/api/useFetchTrendingMovies";
 import Section_LoadingState from "../Section_LoadingState/Section_LoadingState";
 import Section_ErrorState from "../Section_ErrorState/Section_ErrorState";
@@ -7,13 +8,14 @@ import { useRef, useState } from "react";
 import "./TrendingMovies.css";
 
 const TrendingMovies = () => {
+	const { t } = useTranslation();
 	const { data, isLoading, error } = useFetchTrendingMovies(1);
 	const swiperRef = useRef(null);
 	const [isBeginning, setIsBeginning] = useState(true);
 	const [isEnd, setIsEnd] = useState(false);
 
     if (isLoading) {
-        return <Section_LoadingState title={"جاري تحميل الأفلام الأكثر شهرة..."} />;
+        return <Section_LoadingState title={t("loading_trending")} />;
     }
 
 	const handleSwiper = (swiper) => {
@@ -30,7 +32,7 @@ const TrendingMovies = () => {
 	if (error) {
 		return (
 			<Section_ErrorState
-				msg={"حدث خطأ في تحميل الأفلام الأكثر شهرة"}
+				msg={t("error_trending")}
 				error={error}
 			/>
 		);
@@ -40,7 +42,7 @@ const TrendingMovies = () => {
 		<section className="trending-movies py-5">
 			<div className="container">
 				<Section_Heading
-					title={"الأفلام الأكثر شهرة"}
+					title={t("trending_movies")}
 					sliderControls={{
 						prev: () => swiperRef.current?.slidePrev(),
 						next: () => swiperRef.current?.slideNext(),

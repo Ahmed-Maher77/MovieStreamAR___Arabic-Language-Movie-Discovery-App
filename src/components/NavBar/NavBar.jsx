@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useCallback, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchByValue } from "../../utils/redux-toolkit/searchMovies_Slice";
 import { setSearchTvSeriesByValue } from "../../utils/redux-toolkit/searchTvSeries_Slice";
+import { useTranslation } from "react-i18next";
 import Logo from "./Logo";
 import BurgerMenuButton from "./BurgerMenuButton";
 import SearchIcon from "./SearchIcon";
@@ -12,6 +13,7 @@ import "./NavBar.css";
 
 const NavBar = memo(() => {
 	const { pathname } = useLocation();
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const searchByValue = useSelector(
 		(state) => state.search_movies.searchByValue
@@ -34,7 +36,13 @@ const NavBar = memo(() => {
 	// Close mobile menu
 	const closeMenu = () => {
 		setIsMenuOpen(false);
-		closeBtnRef.current?.click();
+		const toggler = closeBtnRef.current;
+		const collapseMenu = document.getElementById("navbarTogglerDemo02");
+		if (toggler && window.getComputedStyle(toggler).display !== "none") {
+			if (collapseMenu && collapseMenu.classList.contains("show")) {
+				toggler.click();
+			}
+		}
 	};
 
 	// Close menu on logo click
@@ -76,7 +84,7 @@ const NavBar = memo(() => {
 							className={`ms-auto ${
 								pathname === "/movies" ? "d-none" : "d-block"
 							} d-lg-none`}
-							ariaLabel="Search movies"
+							ariaLabel={t("search_movies")}
 						/>
 						<BurgerMenuButton
 							isMenuOpen={isMenuOpen}
@@ -87,7 +95,7 @@ const NavBar = memo(() => {
 
 					{/* Navigation Links */}
 					<div
-						className={`collapse navbar-collapse mt-2`}
+						className={`collapse navbar-collapse mt-lg-0`}
 						id="navbarTogglerDemo02"
 					>
 						<NavLinks
@@ -101,7 +109,7 @@ const NavBar = memo(() => {
 							className={`${
 								pathname === "/movies" ? "d-none" : ""
 							} d-none d-lg-block`}
-							ariaLabel="Search movies"
+							ariaLabel={t("search_movies")}
 						/>
 					</div>
 				</div>

@@ -8,12 +8,18 @@
         &::after {
             content: "";
             position: absolute;
-            right: 0;
             bottom: 0;
             width: 50px;
             height: 2px;
             background-color: var(--main-c);
-
         }
     }
+}
+
+[dir="rtl"] .Section-Heading h2::after {
+    right: 0;
+}
+
+[dir="ltr"] .Section-Heading h2::after {
+    left: 0;
 }

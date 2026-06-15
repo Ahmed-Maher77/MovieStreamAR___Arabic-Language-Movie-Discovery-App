@@ -3,13 +3,15 @@ import { useState, useRef, useEffect } from "react";
 import "./Profile_Dropdown.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Tooltip from "../../Tooltip/Tooltip";
 
 const Profile_Dropdown = () => {
+	const { t } = useTranslation();
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef(null);
 	const navigate = useNavigate();
-	const userImage = useSelector((state) => state.auth.userData.photoURL);
+	const userImage = useSelector((state) => state.auth.userData?.photoURL);
 	const isProfilePage = useLocation().pathname === "/profile";
 	const isLargeScreen = useSelector((state) => state.window_properties.isLargeScreen);
 
@@ -36,13 +38,13 @@ const Profile_Dropdown = () => {
 		>
 			<figure onClick={toggleDropdown}>
 				{userImage ? (
-					<img src={userImage} alt={`picture`} className="border border-2 border-dark rounded-circle" />
+					<img src={userImage} alt={`picture`} className="main-border rounded-circle" />
 				) : (
 					<div className="profile-icon">M</div>
 				)}
-				<span className={isProfilePage ? "active" : ""}>حسابي</span>
+				<span className={isProfilePage ? "active" : ""}>{t("my_account")}</span>
 			</figure>
-			<Tooltip content="انتقل إلى صفحة الحساب" direction={isLargeScreen ? "right" : "left-near"} />
+			<Tooltip content={t("go_to_profile")} direction={isLargeScreen ? "right" : "left-near"} />
 
 			{/* {isOpen && (
 				<div className="dropdown-menu">

@@ -20,10 +20,7 @@ function useFetchSimilarMovies(dataType, page, id, limit = null) {
                 dataType == "movies"?
                 `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apikey}&language=${langParam}&page=${page}` :
                 `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${apikey}&language=${langParam}&page=${page}`
-            );
-
-            console.log("Fetched Similar Movies Data:", res.data);
-            
+            );            
             
             // Apply limit only if specified, otherwise return all results
             const limitedData = limit 
@@ -51,11 +48,9 @@ function useFetchSimilarMovies(dataType, page, id, limit = null) {
 
     // Provide consistent return shape
     if (!id) {
-        console.error("Movie ID is required to fetch similar movies.");
         return { data: null, isLoading: false, error: "Movie ID is required." };
     }
     if (!page || page < 1) {
-        console.error("Invalid page number:", page);
         return { data: null, isLoading: false, error: "Invalid page number." };
     }
 

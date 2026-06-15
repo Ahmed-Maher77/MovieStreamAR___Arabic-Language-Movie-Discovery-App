@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { setSearchTvSeriesByValue } from "../../utils/redux-toolkit/searchTvSeries_Slice";
@@ -12,6 +13,7 @@ import Pagination from "../MoviesList/Pagination";
 import MovieCard from "../../components/MovieCard/MovieCard";
 
 const TVSeries_Page = () => {
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const reduxSearchQuery = useSelector(
 		(state) => state.search_tvseries.searchByValue
@@ -97,7 +99,7 @@ const TVSeries_Page = () => {
 				style={{ minHeight: "calc(100vh - 73px)" }}
 			>
 				<Loader
-					title={isSearchingMode ? "جاري البحث..." : "...Loading TV Series"}
+					title={isSearchingMode ? t("loading_search") : t("loading_movies")}
 					aria-live="polite"
 				/>
 			</div>
@@ -111,7 +113,7 @@ const TVSeries_Page = () => {
 				className="text-center my-5"
 				style={{ minHeight: "calc(100vh - 400px)" }}
 			>
-				<h2>حدث خطأ ما</h2>
+				<h2>{t("error_general")}</h2>
 				<span className="red-color">{hasError}</span>
 			</div>
 		);
@@ -147,8 +149,8 @@ const TVSeries_Page = () => {
 						<div className="text-center my-5">
 							<h2>
 								{isSearchingMode
-									? "لم يتم العثور على نتائج..."
-									: "لا يوجد مسلسلات..."}
+									? t("no_results")
+									: t("no_series")}
 							</h2>
 						</div>
 					)}

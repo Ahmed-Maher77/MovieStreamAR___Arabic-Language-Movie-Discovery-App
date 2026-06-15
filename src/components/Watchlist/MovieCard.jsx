@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const MovieCard = ({
 	movie,
@@ -8,6 +9,7 @@ const MovieCard = ({
 	onToggleWatched,
 	isTogglingWatched,
 }) => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	const truncateTitle = (title) => {
@@ -22,7 +24,7 @@ const MovieCard = ({
 	};
 
 	return (
-		<div className="col" style={{ maxWidth: "350px" }}>
+		<div className="col" style={{ maxWidth: "350px", minWidth: "300px" }}>
 			<div className="card h-100 watchlist-card position-relative">
 				{/* Movie Poster */}
 				<img
@@ -46,7 +48,7 @@ const MovieCard = ({
 				{/* Remove Button */}
 				<div className="card-footer d-flex justify-content-between align-items-center gap-2">
 					<button
-						className="btn btn-danger w-100"
+						className="btn btn-danger w-100 d-flex justify-content-center align-items-center gap-2"
 						onClick={() => onRemove(movie.id)}
 						disabled={isRemoving}
 					>
@@ -59,7 +61,7 @@ const MovieCard = ({
 						) : (
 							<>
 								<i className="fas fa-trash ms-2"></i>
-								إزالة من القائمة
+								{t("remove_from_list")}
 							</>
 						)}
 					</button>

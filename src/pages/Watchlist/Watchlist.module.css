@@ -10,7 +10,6 @@
 	display: flex;
 	background: var(--gray-c, #f1f3f6);
 	border-radius: 999px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	padding: 8px;
 	width: 370px;
 	height: 60px;
@@ -21,7 +20,7 @@
 	border: none;
 	background: transparent;
 	color: var(--dark-c, #222);
-	font-size: 1.1rem;
+	font-size: clamp(0.8rem, 1vw + 0.5rem, 1.1rem);
 	font-weight: 500;
 	border-radius: 999px;
 	z-index: 2;
@@ -60,7 +59,7 @@
 }
 
 .toggle-btn.active.left {
-	margin-right: 8px;
+	margin-inline-start: 8px;
 }
 .toggle-btn.active.right {
 	margin-left: 8px;

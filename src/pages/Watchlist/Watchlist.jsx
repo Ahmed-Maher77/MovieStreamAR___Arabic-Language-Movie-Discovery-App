@@ -6,6 +6,7 @@ import EmptyState from "../../components/Watchlist/EmptyState";
 import MovieCard from "../../components/Watchlist/MovieCard";
 import { useWatchlist } from "../../hooks/useWatchlist";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import styles from "./Watchlist.module.css";
 import "./Watchlist.css";
@@ -13,6 +14,7 @@ import ToggleBar from "../../components/Watchlist/ToggleBar";
 import { useSelector } from "react-redux";
 
 const Watchlist = () => {
+	const { t, i18n } = useTranslation();
 	const {
 		watchlist,
 		removeMovie,
@@ -26,7 +28,7 @@ const Watchlist = () => {
 	const handleRemoveMovie = async (movieId) => {
 		setRemovingId(movieId);
 		await removeMovie(movieId);
-		toast.success("تمت إزالة الفيلم من قائمة المشاهدة!");
+		toast.success(t("removed_from_watchlist"), { rtl: i18n.language === "ar" });
 		setRemovingId(null);
 	};
 
@@ -61,7 +63,7 @@ const Watchlist = () => {
 			<div className="container pb-4">
 				<div className="text-center">
 					<h1 className="watchlist-heading">
-						قائمة المشاهدة
+						{t("watchlist")}
 						<span className="lower-line"></span>
 					</h1>
 				</div>

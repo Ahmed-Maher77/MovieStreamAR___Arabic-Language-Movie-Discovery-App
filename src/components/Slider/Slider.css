@@ -17,87 +17,6 @@
 .slide-content {
 	position: relative;
 	height: 100%;
-	background: linear-gradient(
-		90deg,
-		rgba(0, 0, 0, 0.95) 0%,
-		rgba(0, 0, 0, 0.85) 15%,
-		rgba(0, 0, 0, 0.75) 30%, 
-		rgba(0, 0, 0, 0.65) 45%,
-		rgba(0, 0, 0, 0.55) 60%,
-		rgba(0, 0, 0, 0.45) 75%,
-		rgba(0, 0, 0, 0.35) 90%,
-		rgba(0, 0, 0, 0.25) 100%
-	),
-	radial-gradient(
-		circle at center,
-		rgba(var(--main-c-rgb, 188, 97, 50), 0.15) 0%,
-		transparent 70%
-	);
-	backdrop-filter: blur(2px);
-}
-
-.poster-wrapper {
-	position: relative;
-	cursor: pointer;
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-	transition: transform 0.3s ease;
-}
-
-.poster-wrapper:hover {
-	transform: translateY(-10px);
-}
-
-.movie-poster {
-	width: 100%;
-	height: 500px;
-	object-fit: cover;
-	border-radius: 20px;
-	transition: transform 0.3s ease;
-}
-
-.poster-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		to top,
-		rgba(0, 0, 0, 0.8) 0%,
-		rgba(0, 0, 0, 0) 50%
-	);
-	opacity: 0;
-	transition: opacity 0.3s ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 20px;
-}
-
-.poster-wrapper:hover .poster-overlay {
-	opacity: 1;
-}
-
-.see-details-btn {
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(10px);
-	padding: 15px 30px;
-	border-radius: 50px;
-	color: #fff;
-	font-size: 1.1rem;
-	font-weight: 500;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	transform: translateY(20px);
-	transition: all 0.3s ease;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.poster-wrapper:hover .see-details-btn {
-	transform: translateY(0);
 }
 
 /* Swiper Navigation */
@@ -128,16 +47,92 @@
 }
 
 .swiper-pagination-bullet {
-	width: 12px;
-	height: 12px;
+	width: 10px !important;
+	height: 10px !important;
+	margin: 0 10px !important;
+	background: transparent !important;
+	position: relative;
+	opacity: 0 !important; /* Hide by default */
+	transition: all 0.3s ease !important;
+}
+
+/* Pseudo element is the actual visible dot */
+.swiper-pagination-bullet::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 10px;
+	height: 10px;
 	background: rgba(255, 255, 255, 0.5);
-	opacity: 1;
+	border-radius: 10px;
 	transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
+	opacity: 1 !important; /* Show active */
+	transform: none !important; /* disable default swiper dynamic scale */
+}
+
+/* Make the active pseudo-element a pill */
+.swiper-pagination-bullet-active::after {
+	width: 30px;
 	background: #fff;
-	transform: scale(1.2);
+}
+
+.swiper-pagination-bullet-active-next,
+.swiper-pagination-bullet-active-prev {
+	opacity: 1 !important; /* Show adjacent */
+	transform: none !important; /* keep normal size */
+}
+
+.swiper-pagination-bullet-active-next-next,
+.swiper-pagination-bullet-active-prev-prev {
+	opacity: 0 !important; /* Force hide outer ones */
+	visibility: hidden !important;
+}
+
+/* Slider Buttons */
+.slider-btn-primary {
+	background: #fff;
+	color: #000;
+	border: none;
+	border-radius: 6px;
+	font-size: 1.1rem;
+	padding: 0.5rem 1.5rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	transition: all 0.3s ease;
+}
+
+.slider-btn-primary:hover {
+	background: var(--main-c, #bc6132);
+	color: #fff;
+	box-shadow: 0 6px 15px rgba(188, 97, 50, 0.4);
+}
+
+.slider-btn-secondary {
+	background: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	border: 2px solid rgba(255, 255, 255, 0.7);
+	border-radius: 6px;
+	font-size: 1.1rem;
+	padding: 0.5rem 1.5rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	transition: all 0.3s ease;
+}
+
+.slider-btn-secondary:hover {
+	background: rgba(188, 97, 50, 0.2);
+	border-color: var(--main-c, #bc6132);
+	color: #fff;
+	box-shadow: 0 6px 15px rgba(188, 97, 50, 0.2);
 }
 
 /* Responsive Design */
@@ -166,10 +161,4 @@
 .swiper-slide:not(.swiper-slide-active) .carousel-caption {
 	opacity: 0 !important;
 	visibility: hidden !important;
-}
-
-/* Swiper Pagination */
-.swiper-pagination-bullet {
-	width: 10.3px;
-    height: 10.3px;
 }

@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 const LearnMoreButton = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const page_direction = useSelector(
 		(state) => state.window_properties.page_direction
@@ -25,7 +27,7 @@ const LearnMoreButton = () => {
 				margin: "0 auto",
 			}}
 		>
-			تعرف علينا أكثر
+			{t("about_learn_more")}
 			<i
 				className={`fa-solid animated-arrow-hover ${
 					isRTL ? "fa-arrow-left me-3" : "fa-arrow-right ms-3"

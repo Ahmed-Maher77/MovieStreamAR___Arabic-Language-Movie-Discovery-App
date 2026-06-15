@@ -58,7 +58,7 @@
 	font-size: 1.1rem;
 }
 
-.login-btn {
+.login-modal-body .login-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -74,7 +74,7 @@
 	transition: all 0.3s ease;
 }
 
-.login-btn:hover {
+.login-modal-body .login-btn:hover {
 	background: #f8f8f8;
 	transform: translateY(-2px);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

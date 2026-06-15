@@ -1,4 +1,5 @@
 import { useLocation, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { moviesDetailsPageVariants } from "../../utils/Animations_Variants/Animations_Variants";
 import useFetchMovie from "../../utils/api/useFetchMovie";
@@ -21,6 +22,8 @@ const MoviesDetails = () => {
     const dataType = comingFrom === "moviesPage" ? "movies" : "tv";
 	const { data: similarMovies, isLoading_SimilarMovies, error_SimilarMovies } = useFetchSimilarMovies(dataType, 1, id);
 
+	const { t } = useTranslation();
+
 	// Loading State
 	if (isLoading) {
 		return (
@@ -28,7 +31,7 @@ const MoviesDetails = () => {
 				className="d-flex justify-content-center align-items-center"
 				style={{ minHeight: "calc(100vh - 73px)" }}
 			>
-				<Loader title="...Loading Movie Data" />
+				<Loader title={t("loading_movie_data")} />
 			</div>
 		);
 	}
@@ -40,9 +43,9 @@ const MoviesDetails = () => {
 				className="text-center my-5"
 				style={{ minHeight: "calc(100vh - 400px)" }}
 			>
-				<h2>Something went wrong</h2>
+				<h2>{t("error_something_wrong")}</h2>
 				<span className="red-color">
-					{error || "Failed to fetch movie details."}
+					{error || t("error_fetch_movie")}
 				</span>
 			</div>
 		);
@@ -66,23 +69,23 @@ const MoviesDetails = () => {
 	// Formatters
 	const formattedGenres = formatList(genres, "name");
 	const formattedLanguages = formatList(spoken_languages, "name");
-	const countryName = production_countries?.[0]?.name || "غير متوفر";
+	const countryName = production_countries?.[0]?.name || t("not_available");
 	const rating = vote_average
 		? `${(Math.round(vote_average * 10) / 10).toFixed(1)} / 10`
 		: "N/A";
 
 	const movieDetails = [
-		{ label: "اسم الفيلم", value: title },
-		{ label: "التقييم", value: rating },
-		{ label: "عدد التقييمات", value: vote_count || "N/A" },
-		{ label: "تاريخ الإنتاج", value: release_date || "غير متوفر" },
+		{ label: t("movie_name"), value: title },
+		{ label: t("rating"), value: rating },
+		{ label: t("rating_count"), value: vote_count || "N/A" },
+		{ label: t("release_date"), value: release_date || t("not_available") },
 		{
-			label: "مدة المشاهدة",
-			value: runtime ? `${runtime} دقيقة` : "غير متوفر",
+			label: t("duration"),
+			value: runtime ? `${runtime} ${t("minutes")}` : t("not_available"),
 		},
-		{ label: "البلد", value: countryName },
-		{ label: "النوع", value: formattedGenres },
-		{ label: "اللغات المتاحة", value: formattedLanguages },
+		{ label: t("country"), value: countryName },
+		{ label: t("genre"), value: formattedGenres },
+		{ label: t("languages"), value: formattedLanguages },
 	];
 
 

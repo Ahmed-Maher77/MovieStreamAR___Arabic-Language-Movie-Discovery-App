@@ -3,6 +3,7 @@ import MovieDetail from "./MovieDetail";
 import MoviePoster from "./MoviePoster";
 import PropTypes from "prop-types";
 import { memo, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import WatchlistButton from "./WatchlistButton";
 import { useWatchlist } from "../../hooks/useWatchlist";
 import { toast } from "react-toastify";
@@ -18,16 +19,19 @@ const MovieContent = ({
 	overview,
 	id,
 }) => {
+	const { t, i18n } = useTranslation();
 	const { isInWatchlist, addMovie, removeMovie } = useWatchlist();
 	const [isLoading, setIsLoading] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const isAuth = useSelector((state) => state.auth.isAuth);
 	const handleLogin = useGoogleLogin();
+	const isRTL = i18n.language === "ar";
 
 	const isInWatchlistState = isInWatchlist(id);
 
 	const handleWatchlist = async () => {
 		if (!isAuth) {
+			sessionStorage.setItem("pendingMovie", JSON.stringify({ id, title, poster_path }));
 			setShowLoginModal(true);
 			return;
 		}
@@ -35,10 +39,10 @@ const MovieContent = ({
 		setIsLoading(true);
 		if (isInWatchlistState) {
 			await removeMovie(id);
-			toast.success("تمت إزالة الفيلم من قائمة المشاهدة!");
+			toast.success(t("removed_from_watchlist"), { rtl: isRTL });
 		} else {
 			await addMovie({ id, title, poster_path });
-			toast.success("تمت إضافة الفيلم إلى قائمة المشاهدة!");
+			toast.success(t("added_to_watchlist"), { rtl: isRTL });
 		}
 		setIsLoading(false);
 	};
@@ -79,8 +83,8 @@ const MovieContent = ({
 
 			{/* ================= Movie Story ================= */}
 			<section className="story p-3 gray-bg rounded-3 mt-4">
-				<h3 className="mb-4 py-2 main-color">قصة الفيلم:</h3>
-				<p>{overview || "غير متوفر"}</p>
+				<h3 className="mb-4 py-2 main-color">{t("story")}</h3>
+				<p>{overview || t("not_available")}</p>
 			</section>
 
 			{/* ================= Buttons Section ================= */}
@@ -92,10 +96,10 @@ const MovieContent = ({
 					rel="noopener noreferrer"
 					className="btn btn-main d-flex gap-2 align-items-center"
 					style={homepage ? {} : { pointerEvents: "none", opacity: 0.5 }}
-					aria-label={homepage ? "مشاهدة الفيلم" : "زر غير مفعل"}
+					aria-label={homepage ? t("watch_movie") : t("not_available")}
 					tabIndex={homepage ? "0" : "-1"}
 				>
-					مشاهدة الفيلم
+					{t("watch_movie")}
 					<span className="fa-solid fa-video mt-1"></span>
 				</a>
 
@@ -103,9 +107,9 @@ const MovieContent = ({
 				<NavLink
 					to="/"
 					className="btn btn-main d-flex gap-2 align-items-center"
-					aria-label="عودة للصفحة الرئيسية"
+					aria-label={t("back_home")}
 				>
-					عودة للصفحة الرئيسية
+					{t("back_home")}
 					<span className="fa-solid fa-house"></span>
 				</NavLink>
 			</section>

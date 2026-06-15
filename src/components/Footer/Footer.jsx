@@ -1,32 +1,40 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../NavBar/LanguageSwitcher";
 import "./Footer.css";
 
 const Footer = memo(() => {
+	const { t } = useTranslation();
 	return (
 		<footer className="footer">
 			<div className="footer-container">
 				{/* ==================== Brand Section ==================== */}
 				<div className="footer-brand">
-					<h2>🎬 موقع الأفلام</h2>
-					<p>أفضل مكان لمشاهدة ومتابعة أحدث الأفلام!</p>
+					<h2>{t("footer_brand")}</h2>
+					<p>{t("footer_tagline")}</p>
 				</div>
 
 				{/* ==================== Navigation Links ==================== */}
-				<ul className="footer-links" aria-label="روابط الموقع">
+				<ul className="footer-links" aria-label={t("home")}>
 					<li>
-                        <NavLink to="/" aria-label="انتقل إلى الرئيسية">الرئيسية</NavLink>
+                        <NavLink to="/" aria-label={t("home")}>{t("home")}</NavLink>
 					</li>
 					<li>
-                        <NavLink to="/movies" aria-label="انتقل إلى صفحة الأفلام">الأفلام</NavLink>
+                        <NavLink to="/movies" aria-label={t("movies")}>{t("movies")}</NavLink>
 					</li>
 					<li>
-					<NavLink to="/about-us" aria-label="انتقل إلى صفحة المن نحن">من نحن</NavLink>
+					<NavLink to="/about-us" aria-label={t("about_us")}>{t("about_us")}</NavLink>
 					</li>
 					<li>
-					<a href="https://ahmedmaher-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" title="اتصل بنا">اتصل بنا</a>
+					<a href="https://ahmedmaher-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" title={t("footer_contact")}>{t("footer_contact")}</a>
 					</li>
 				</ul>
+
+				{/* ==================== Language Switcher ==================== */}
+				<div className="footer-lang">
+					<LanguageSwitcher />
+				</div>
 
 				{/* ==================== Social Media Links ==================== */}
 				<div className="footer-social">
@@ -48,8 +56,8 @@ const Footer = memo(() => {
 			{/* ==================== Copyright ==================== */}
 			<div className="footer-bottom">
 				<p>
-					جميع الحقوق محفوظة &copy; {new Date().getFullYear()} &nbsp;| &nbsp;
-                    <a href="https://ahmedmaher-portfolio.vercel.app/" className="main-color fw-bold fs-6 text-decoration-none" target="_blank" title="Go To Ahmed Maher's Portfolio"rel="noopener noreferrer" aria-label="انتقل إلى موقع أحمد ماهر">أحمد ماهر</a>
+					{t("copyright")} &copy; {new Date().getFullYear()} &nbsp;| &nbsp;
+                    <a href="https://ahmedmaher-portfolio.vercel.app/" className="main-color fw-bold fs-6 text-decoration-none" target="_blank" title="Go To Ahmed Maher's Portfolio"rel="noopener noreferrer" aria-label={t("footer_contact")}>Ahmed Maher</a>
 				</p>
 			</div>
 			</footer>

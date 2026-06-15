@@ -2,86 +2,75 @@ const slides = [
     {
         id: 986056,
         poster: "https://image.tmdb.org/t/p/w1280/rthMuZfFv4fqEU4JVbgSW9wQ8rs.jpg",
-        title: "ثاندربولتس",
-        overview:
-            "بعد أن وجدوا أنفسهم محاصرين في فخ الموت، يجب على سبعة من المنبوذين المحبطين الشروع في مهمة خطيرة ستجبرهم على مواجهة أظلم زوايا ماضيهم.",
+        ar: { title: "ثاندربولتس", overview: "بعد أن وجدوا أنفسهم محاصرين في فخ الموت، يجب على سبعة من المنبوذين المحبطين الشروع في مهمة خطيرة ستجبرهم على مواجهة أظلم زوايا ماضيهم." },
+        en: { title: "Thunderbolts", overview: "After finding themselves trapped in a death trap, seven disillusioned outcasts must embark on a dangerous mission that will force them to face the darkest corners of their past." },
         rating: 7.5,
         view: 663,
     },
     {
         id: 668489,
         poster: "https://image.tmdb.org/t/p/w1280/65MVgDa6YjSdqzh7YOA04mYkioo.jpg",
-        title: "خراب",
-        overview:
-            "حين تخرج سرقة مخدرات عن نطاق السيطرة بشكل مميت، يشقّ شرطي منهك طريقه عبر عالم الإجرام في مدينة فاسدة لإنقاذ ابن رجل سياسي.",
+        ar: { title: "خراب", overview: "حين تخرج سرقة مخدرات عن نطاق السيطرة بشكل مميت، يشقّ شرطي منهك طريقه عبر عالم الإجرام في مدينة فاسدة لإنقاذ ابن رجل سياسي." },
+        en: { title: "Ruin", overview: "When a drug heist goes fatally out of control, an exhausted cop fights his way through the criminal underworld of a corrupt city to save a politician's son." },
         rating: 6.6,
         view: 557,
     },
     {
         id: 1425045,
         poster: "https://image.tmdb.org/t/p/w1280/apNfldKI3RiaukNwJzr8EjRG7Wc.jpg",
-        title: "Brick",
-        overview:
-            "عندما يُطوّق جدار غامض البناية السكنية التي يعيش فيها \"تيم\" و\"أوليفيا\" بين عشية وضحاها، يضطران إلى التعاون مع جيرانهما الحذرين للخروج سالمين.",
+        ar: { title: "Brick", overview: "عندما يُطوّق جدار غامض البناية السكنية التي يعيش فيها \"تيم\" و\"أوليفيا\" بين عشية وضحاها، يضطران إلى التعاون مع جيرانهما الحذرين للخروج سالمين." },
+        en: { title: "Brick", overview: "When a mysterious wall surrounds the apartment building where Tim and Olivia live overnight, they must cooperate with their wary neighbors to escape safely." },
         rating: 5.743,
         view: 127.9943,
     },
     {
         id: 1233069,
         poster: "https://image.tmdb.org/t/p/w1280/bVm6udIB6iKsRqgMdQh6HywuEBj.jpg",
-        title: "حصانة دبلوماسية",
-        overview:
-            'حين يختفي ابنها داخل قنصلية أمريكية، تبذل الجندية السابقة في القوات الخاصة "سارة" قصارى جهدها للعثور عليه وتكشف عن مؤامرة دنيئة.',
+        ar: { title: "حصانة دبلوماسية", overview: 'حين يختفي ابنها داخل قنصلية أمريكية، تبذل الجندية السابقة في القوات الخاصة "سارة" قصارى جهدها للعثور عليه وتكشف عن مؤامرة دنيئة.' },
+        en: { title: "Diplomatic Immunity", overview: "When her son disappears inside a US consulate, former special forces soldier Sarah does everything she can to find him and uncovers a sinister conspiracy." },
         rating: 6.7,
         view: 244,
     },
     {
-        id: 93405,
+        id: 1412113,
         poster: "https://image.tmdb.org/t/p/w1280/2meX1nMdScFOoV4370rqHWKmXhY.jpg",
-        title: "لعبة الحبّار",
-        overview:
-            'يقبل مئات اللاعبين الذين يعانون من ضائقة مالية دعوة غريبة للتنافس في ألعاب للأطفال، حيث تنتظرهم جائزة مُغرية تصحبها مخاطر كبيرة ومميتة',
+        ar: { title: "لعبة الحبّار", overview: 'يقبل مئات اللاعبين الذين يعانون من ضائقة مالية دعوة غريبة للتنافس في ألعاب للأطفال، حيث تنتظرهم جائزة مُغرية تصحبها مخاطر كبيرة ومميتة.' },
+        en: { title: "Squid Game", overview: "Hundreds of cash-strapped players accept a strange invitation to compete in children's games, where a tempting prize awaits with deadly risks." },
         rating: 7.9,
         view: 640.9314,
     },
     {
         id: 497698,
         poster: "https://image.tmdb.org/t/p/w1280/6azpBJGcLx9SKif8h9VMnflBfa.jpg",
-        title: "الأرملة السوداء",
-        overview:
-            "تواجه ناتاشا رومانوف ، المعروفة أيضًا باسم الأرملة السوداء ، الأجزاء المظلمة من دفتر الأستاذ الخاص بها عندما تنشأ مؤامرة خطيرة مرتبطة بماضيها. تلاحقها قوة لن تتوقف عند أي شيء لإسقاطها ، يجب أن تتعامل ناتاشا مع تاريخها كجاسوسة والعلاقات المحطمة التي خلفتها في أعقابها قبل فترة طويلة من أن تصبح منتقمًا.",
+        ar: { title: "الأرملة السوداء", overview: "تواجه ناتاشا رومانوف، المعروفة أيضًا باسم الأرملة السوداء، الأجزاء المظلمة من دفتر الأستاذ الخاص بها عندما تنشأ مؤامرة خطيرة مرتبطة بماضيها." },
+        en: { title: "Black Widow", overview: "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises." },
         rating: 7.2,
         view: 10515,
     },
     {
         id: 1197306,
         poster: "https://image.tmdb.org/t/p/w1280/fTrQsdMS2MUw00RnzH0r3JWHhts.jpg",
-        title: "رجل عامل",
-        overview:
-            "تدور احداث الفيلم حين يترك (ليفون كيد) مهنته ليعمل في البناء ويكون أبًا صالحًا لابنته، لكن اختفاء فتاة من المدينة يجبره على العودة إلى المهارات التي جعلته شخصية أسطورية في عالم مكافحة الإرهاب الغامض.",
+        ar: { title: "رجل عامل", overview: "تدور احداث الفيلم حين يترك (ليفون كيد) مهنته ليعمل في البناء ويكون أبًا صالحًا لابنته، لكن اختفاء فتاة من المدينة يجبره على العودة إلى المهارات التي جعلته شخصية أسطورية." },
+        en: { title: "Working Man", overview: "When Levon Cade leaves his profession to work construction and be a good father to his daughter, a girl's disappearance forces him to return to the skills that made him a legendary figure." },
         rating: 6.5,
         view: 599,
     },
     {
         id: 870028,
         poster: "https://image.tmdb.org/t/p/w1280/rdxdvXQGqCj2Vb7SvTL8gdxlSzI.jpg",
-        title: "The Accountant²",
-        overview:
-            "عندما يُقتل أحد معارفه القدامى، يُجبر وولف على حل القضية. إدراكًا منه لضرورة اتخاذ إجراءات أكثر صرامة، يستعين بشقيقه المنفصل عنه والشديد الخطورة، براكس، للمساعدة. وبالتعاون مع ماريبيث ميدينا، يكشفان مؤامرةً قاتلة، ويصبحان هدفًا لشبكةٍ من القتلة عديمي الرحمة الذين لن يترددوا في فعل أي شيء لإخفاء أسرارهم.",
+        ar: { title: "The Accountant²", overview: "عندما يُقتل أحد معارفه القدامى، يُجبر وولف على حل القضية. يستعين بشقيقه المنفصل عنه براكس للمساعدة، ويكشفان مؤامرة قاتلة." },
+        en: { title: "The Accountant²", overview: "When an old acquaintance is killed, Wolff is forced to solve the case. He enlists his estranged brother Brax for help, and they uncover a deadly conspiracy." },
         rating: 7.2,
         view: 145,
     },
     {
         id: 1241436,
         poster: "https://image.tmdb.org/t/p/w1280/cJvUJEEQ86LSjl4gFLkYpdCJC96.jpg",
-        title: "Warfare",
-        overview:
-            "تنطلق فرقة من قوات النخبة البحرية في مهمة خطيرة في مدينة الرمادي بالعراق، حيث تستعيد ذكرياتهم عن تلك الأحداث ذكريات الفوضى والأخوة التي سادت أثناء الحرب.",
+        ar: { title: "Warfare", overview: "تنطلق فرقة من قوات النخبة البحرية في مهمة خطيرة في مدينة الرمادي بالعراق، حيث تستعيد ذكرياتهم عن تلك الأحداث ذكريات الفوضى والأخوة التي سادت أثناء الحرب." },
+        en: { title: "Warfare", overview: "A Navy SEAL platoon embarks on a dangerous mission in the Iraqi city of Ramadi, reliving memories of the chaos and brotherhood that prevailed during the war." },
         rating: 7.2,
         view: 168,
     },
 ];
 
-const randomSlides = slides.sort(() => Math.random() - 0.5);
-
-export { randomSlides };
+export { slides };

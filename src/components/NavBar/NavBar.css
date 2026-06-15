@@ -25,6 +25,7 @@
 		transition: color 0.2s ease;
 	}
 	.navbar-toggler {
+		border: none;
 		&:focus {
 			box-shadow: 0 0 0 #0000004c;
 		}
@@ -42,6 +43,9 @@
 	.collapse {
 		.navbar-nav {
 			.nav-item {
+				.nav-link.fs-5 {
+					font-size: 1.1rem !important;
+				}
 				a {
 					color: #000;
 					&.active {
@@ -83,6 +87,10 @@
 .login-btn {
 	@media (min-width: 992px) {
 		font-size: 0.9rem !important;
+		border-radius: 20px !important;
+	}
+	@media (max-width: 991px) {
+		border-radius: 8px !important;
 	}
 }
 
@@ -104,6 +112,21 @@
 	max-height: 0;
 	opacity: 0;
 	transform: translateY(-10px);
+}
+
+.search-bar-container input {
+	padding-inline-start: 2.7rem !important;
+}
+
+.fa-magnifying-glass {
+	left: auto !important;
+	right: 1rem !important;
+	opacity: 0.6;
+	width: fit-content;
+}
+[dir="ltr"] .fa-magnifying-glass {
+	right: auto;
+	left: 1rem !important;
 }
 
 .burger-search-wraper {

@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./utils/redux-toolkit/store";
 import { Provider } from "react-redux";
 import React, { Suspense, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import MainLoader from "./components/Loader/MainLoader";
@@ -100,13 +99,9 @@ function App() {
 
 	return (
 		<Provider store={store}>
+			<ToastWrapper />
 			<AuthProvider>
-				<ToastWrapper />
-				<AnimatePresence mode="wait">
-					<motion.div key={window.location.pathname}>
-						<RouterProvider router={router} />
-					</motion.div>
-				</AnimatePresence>
+				<RouterProvider router={router} />
 			</AuthProvider>
 		</Provider>
 	);

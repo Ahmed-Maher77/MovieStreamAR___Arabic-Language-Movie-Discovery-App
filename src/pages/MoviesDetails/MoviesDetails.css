@@ -35,6 +35,8 @@
 
 .GoBack_Btn {
 	transition-duration: 0.3s;
+	padding-bottom: 11.5px;
+	margin-inline-start: auto;
 	&:hover {
 		background-color: #565e649e;
 		border-color: #565e649e;
@@ -101,6 +103,16 @@
 	}
 }
 
+[dir="ltr"] .Movies-Details .container main div:first-of-type {
+	text-align: left !important;
+}
+
+[dir="ltr"] .watchlist-btn {
+	@media (min-width: 768px) {
+		margin-inline-start: 50px;
+	}
+}
+
 .watchlist-btn.add {
 	background: rgba(255,255,255,0.85);
 	color: var(--main-c, #bc6132);
@@ -137,4 +149,12 @@
 
 .watchlist-btn:active .icon {
 	transform: scale(1.2) rotate(-10deg);
+}
+
+.GoBack_Btn {
+	@media (min-width: 768px) {
+		width: 120px !important;
+		/* margin-inline-start: 0 !important; */
+		margin-inline-start: auto !important;
+	}
 }

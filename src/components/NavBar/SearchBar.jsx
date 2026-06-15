@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const SearchBar = ({ value, onChange, onClose, show }) => {
+	const { t, i18n } = useTranslation();
+	const isRTL = i18n.language === "ar";
 	return (
 		<div className={`search-bar-container ${show ? "show" : "hide"}`}>
 			<div className="container">
@@ -9,12 +12,12 @@ const SearchBar = ({ value, onChange, onClose, show }) => {
 					role="search"
 					onSubmit={(e) => e.preventDefault()}
 				>
-					<div className="input-field position-relative w-100">
+					<div className={`input-field position-relative w-100 ${isRTL ? "" : "d-flex flex-row-reverse"}`}>
 						<input
 							className="form-control rounded-5 px-3"
 							type="search"
-							placeholder="ابحث"
-							aria-label="Search"
+							placeholder={t("search_placeholder")}
+							aria-label={t("search_placeholder")}
 							value={value}
 							onChange={onChange}
 						/>

@@ -1,20 +1,22 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import "./LoginModal.css";
 
 const LoginModal = ({ isOpen, onClose, onLogin }) => {
+	const { t } = useTranslation();
 	if (!isOpen) return null;
 
 	return (
 		<div className="login-modal-overlay" onClick={onClose}>
 			<div className="login-modal-content" onClick={(e) => e.stopPropagation()}>
 				<div className="login-modal-header">
-					<h3>تسجيل الدخول</h3>
-					<button className="close-btn" onClick={onClose} aria-label="إغلاق">
+					<h3>{t("login_title")}</h3>
+					<button className="close-btn" onClick={onClose} aria-label={t("back")}>
 						<span className="fa-solid fa-xmark"></span>
 					</button>
 				</div>
 				<div className="login-modal-body">
-					<p>يرجى تسجيل الدخول لإضافة فيلم إلى قائمة المشاهدة</p>
+					<p>{t("login_description")}</p>
 					<button className="login-btn" onClick={onLogin}>
 						<img
 							src="https://www.google.com/favicon.ico"
@@ -22,7 +24,7 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
 							width="20"
 							height="20"
 						/>
-						تسجيل الدخول باستخدام Google
+						{t("login_google")}
 					</button>
 				</div>
 			</div>

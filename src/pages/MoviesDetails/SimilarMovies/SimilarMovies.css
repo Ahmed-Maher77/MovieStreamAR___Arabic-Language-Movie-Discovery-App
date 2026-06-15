@@ -13,21 +13,20 @@
     overflow: hidden;
     border: 2px solid;
     background: transparent;
-    color: #007bff;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    color: #bc6132;
+    box-shadow: 0 4px 15px rgba(188, 97, 50, 0.2);
 }
 
 .see-more-btn {
-    border-color: #007bff;
-    color: #007bff;
+    border-color: #bc6132;
+    color: #bc6132;
 }
 
 .see-more-btn:hover {
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, #bc6132, #a0522a);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
-    border-color: #007bff;
+    box-shadow: 0 8px 25px rgba(188, 97, 50, 0.4);
+    border-color: #bc6132;
 }
 
 .see-more-btn::before {
@@ -137,13 +136,13 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     .see-more-btn {
-        border-color: #4dabf7;
-        color: #4dabf7;
-        box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+        border-color: #e68d60;
+        color: #e68d60;
+        box-shadow: 0 4px 15px rgba(230, 141, 96, 0.3);
     }
     
     .see-more-btn:hover {
-        background: linear-gradient(135deg, #4dabf7, #339af0);
+        background: linear-gradient(135deg, #e68d60, #d6713b);
         color: #1a1a1a;
     }
     

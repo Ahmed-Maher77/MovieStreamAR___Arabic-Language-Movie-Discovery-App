@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 
 const Pagination = ({setPage, page, startPage, endPage, totalPages}) => {
+    const { t, i18n } = useTranslation();
+    const isRTL = i18n.language === "ar";
     const handleSetPage = useCallback((newPage) => setPage(newPage), [setPage]);
 
     if (totalPages <= 1) {
@@ -13,8 +16,8 @@ const Pagination = ({setPage, page, startPage, endPage, totalPages}) => {
         <footer className="Pagination text-center my-3">
             <div className="btn-group gap-2" role="group" aria-label="navigation buttons" style={{marginInline: "auto"}}>
             {/* =================== Previous Button =================== */}
-            <button className="btn btn-outline-primary" onClick={() => handleSetPage(page - 1)} disabled={page <= 1} style={{borderRadius: "0 5px 5px 0"}} aria-label="Previous page">
-                السابق
+            <button className="btn btn-outline-primary" onClick={() => handleSetPage(page - 1)} disabled={page <= 1} style={{borderRadius: isRTL ? "0 5px 5px 0" : "5px 0 0 5px"}} aria-label="Previous page">
+                {t("previous")}
             </button>
 
             {/* =================== Page Numbers (Limited to range) =================== */}
@@ -39,8 +42,8 @@ const Pagination = ({setPage, page, startPage, endPage, totalPages}) => {
             )}
 
             {/* =================== Next Button===================  */}
-            <button className="next-btn btn btn-outline-primary" onClick={() => handleSetPage(page + 1)} disabled={page >= totalPages} style={{borderRadius: "5px 0 0 5px"}} aria-label="Next page">
-                التالي
+            <button className="next-btn btn btn-outline-primary" onClick={() => handleSetPage(page + 1)} disabled={page >= totalPages} style={{borderRadius: isRTL ? "5px 0 0 5px" : "0 5px 5px 0"}} aria-label="Next page">
+                {t("next")}
             </button>
             </div>
         </footer>

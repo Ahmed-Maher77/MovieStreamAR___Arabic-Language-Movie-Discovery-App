@@ -1,6 +1,8 @@
 import propTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const MoviePoster = ({ posterPath, homepage, title }) => {
+	const { t } = useTranslation();
 	return (
 		<figure className="position-relative m-2 p-0 rounded-2 overflow-hidden">
 			<img
@@ -12,11 +14,11 @@ const MoviePoster = ({ posterPath, homepage, title }) => {
 				<a
 					className="poster-overlay position-absolute w-100 h-100 start-0 top-0 d-flex align-items-center justify-content-center fw-bold text-decoration-none white-color fs-5"
 					href={homepage}
-					title="Watch Now"
+					title={t("watch_now")}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<span>شاهد الآن</span>
+					<span>{t("watch_now")}</span>
 				</a>
 			)}
 		</figure>

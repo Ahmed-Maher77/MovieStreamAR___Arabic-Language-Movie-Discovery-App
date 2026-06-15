@@ -8,12 +8,13 @@
 		cursor: pointer;
 		background-color: transparent;
 		.card-body {
-			background-color: #0000009c;
-			backdrop-filter: blur(3px);
+			background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.7) 60%, transparent 100%);
 			transition: var(--trans-3);
             bottom: -100%;
+			border-radius: 0 0 8px 8px; /* Match card border radius if any */
 			h3 {
 				color: var(--white-fixed-c);
+				text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 			}
 			.details {
 				color: var(--gray-fixed-c);

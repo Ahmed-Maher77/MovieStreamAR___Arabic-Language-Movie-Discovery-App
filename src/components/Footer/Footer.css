@@ -3,7 +3,7 @@
 	color: #fff;
 	text-align: center;
 	padding: 30px 0;
-	border-top: 3px solid #ff4500;
+	border-top: 3px solid var(--main-c, #bc6132);
 	margin-bottom: -26px;
 }
 
@@ -16,7 +16,7 @@
 
 .footer-brand h2 {
 	font-size: 24px;
-	color: #ff4500;
+	color: var(--main-c, #bc6132);
 	margin-bottom: 8px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .footer-links a {
-	color: #ff4500;
+	color: var(--main-c, #bc6132);
 	text-decoration: none;
 	font-size: 16px;
 	transition: 0.3s;
@@ -54,7 +54,7 @@
 }
 
 .footer-social a {
-	color: #ff4500;
+	color: var(--main-c, #bc6132);
 	font-size: 22px;
 	transition: 0.3s;
 }
@@ -68,8 +68,20 @@
 	font-size: 14px;
 	color: #bbb;
     a:hover {
-        color: #ff4500;
+        color: var(--main-c, #bc6132);
     }
+}
+
+.footer-lang .language-switcher-btn {
+	color: #bbb;
+}
+.footer-lang .language-switcher-btn:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.1);
+}
+.footer-lang .language-dropdown {
+	left: 0;
+	right: auto;
 }
 
 /* Responsive Styles */

@@ -1,22 +1,24 @@
 import { useSelector } from "react-redux";
 import { auth } from "../../utils/api/firebase-config";
 import { signOut } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import ProfileAvatar from "../../components/Profile/ProfileAvatar";
 import ProfileInfo from "../../components/Profile/ProfileInfo";
 import ProfileActions from "../../components/Profile/ProfileActions";
 
 const Profile = () => {
+	const { t, i18n } = useTranslation();
 	const user = useSelector((state) => state.auth.userData);
 	const authLoading = useSelector((state) => state.auth.authLoading);
+	const isRTL = i18n.language === "ar";
 
 	const handleLogout = async () => {
 		try {
 			await signOut(auth);
-			toast.success("تم تسجيل الخروج بنجاح");
+			toast.success(t("logout_success"), { rtl: isRTL });
 		} catch (error) {
-			console.error(error);
-			toast.error("حدث خطأ أثناء تسجيل الخروج");
+			toast.error(t("logout_error"), { rtl: isRTL });
 		}
 	};
 
@@ -32,7 +34,7 @@ const Profile = () => {
 			>
 				<div className="container">
 					<div className="text-center">
-						<h2>يرجى تسجيل الدخول أولاً</h2>
+						<h2>{t("login_required")}</h2>
 					</div>
 				</div>
 			</div>
@@ -50,7 +52,7 @@ const Profile = () => {
 				<div className="row justify-content-center">
 					<div style={{ width: "100%", maxWidth: "525px" }}>
 						<div
-							className="card shadow-lg rounded-4 border-0 p-4 animate__animated animate__fadeInUp"
+							className="card rounded-4 border-0 p-4 animate__animated animate__fadeInUp"
 							style={{ background: "rgba(255,255,255,0.97)" }}
 						>
 							<div className="d-flex flex-column align-items-center position-relative mb-3">

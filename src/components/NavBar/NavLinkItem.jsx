@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 const NavLinkItem = ({ to, children, onClick, ...props }) => (
 	<li className="nav-item">
 		<NavLink
-			className="nav-link fs-5 px-3"
+			className="nav-link fs-5"
+			style={{ paddingInline: "0.8rem" }}
 			to={to}
 			onClick={onClick}
 			{...props}
