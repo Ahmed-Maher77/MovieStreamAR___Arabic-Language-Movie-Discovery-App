@@ -43,6 +43,7 @@ const Slider = () => {
 			className="hero-slider"
 			style={{
 				height: "calc(100vh - 64px)",
+				height: "calc(100vh - 64px)",
 				minHeight: "630px",
 				maxHeight: "900px",
 			}}
@@ -53,8 +54,11 @@ const Slider = () => {
 				effect="fade"
 				fadeEffect={{ crossFade: true }}
 				speed={1200}
+				fadeEffect={{ crossFade: true }}
+				speed={1200}
 				spaceBetween={0}
 				slidesPerView={1}
+				loop={true}
 				loop={true}
 				autoplay={{
 					delay: 5000,
@@ -68,9 +72,13 @@ const Slider = () => {
 					clickable: true,
 					el: ".swiper-pagination",
 					dynamicBullets: true,
+					dynamicBullets: true,
 				}}
 				className="hero-swiper"
 			>
+				{slidesData.map((movie, index) => {
+					const bgUrl = movie.poster.startsWith('http') ? movie.poster : `https://image.tmdb.org/t/p/original${movie.poster}`;
+					return (
 				{slidesData.map((movie, index) => {
 					const bgUrl = movie.poster.startsWith('http') ? movie.poster : `https://image.tmdb.org/t/p/original${movie.poster}`;
 					return (
@@ -98,7 +106,10 @@ const Slider = () => {
 								</div>
 							</div>
 						)}
+						)}
 					</SwiperSlide>
+					);
+				})}
 					);
 				})}
 
