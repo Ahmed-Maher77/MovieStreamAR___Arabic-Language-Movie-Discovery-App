@@ -30,6 +30,18 @@ const MoviesDetails = () => {
 
 	const { t } = useTranslation();
 
+	// Log movie data fetch lifecycle
+	useEffect(() => {
+		console.log(`[MoviesDetails] Mounted for id: ${id}, initialComingFrom: ${initialComingFrom}`);
+		return () => console.log(`[MoviesDetails] Unmounted for id: ${id}`);
+	}, [id]);
+
+	useEffect(() => {
+		if (isLoading) console.log(`[MoviesDetails] Loading data for id: ${id}`);
+		else if (error) console.log(`[MoviesDetails] Error for id: ${id}`, error);
+		else if (movieData) console.log(`[MoviesDetails] Data loaded for id: ${id}, title: ${movieData.title || movieData.name}`);
+	}, [isLoading, error, movieData, id]);
+
 	const title = movieData?.title || movieData?.name || "";
 
 	useEffect(() => {

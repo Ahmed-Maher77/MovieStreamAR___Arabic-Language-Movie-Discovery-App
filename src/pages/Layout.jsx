@@ -2,7 +2,6 @@ import { Outlet, useLocation, useMatches } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { useDispatch } from "react-redux";
 import { useCallback, useEffect, useLayoutEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { setIsLargeScreen, setPageDirection } from "../utils/redux-toolkit/windowSlice.js";
 import Footer from "../components/Footer/Footer.jsx";
 import AnimatedScrollToTop from "../common/AnimatedScrollToTop.jsx";
@@ -13,6 +12,11 @@ const Layout = () => {
 	const location = useLocation();
 	const matches = useMatches();
 	const isNotFound = matches.some((m) => m.id === "notFound");
+
+	// Log navigation for debugging empty page issue
+	useEffect(() => {
+		console.log(`[Nav] Route changed to: ${location.pathname}${location.search} at ${new Date().toISOString()}`);
+	}, [location]);
 
 	const handleResize = useCallback(() => {
 		dispatch(setIsLargeScreen(window.innerWidth > 991));
@@ -41,17 +45,7 @@ const Layout = () => {
 			<AnimatedScrollToTop />
 
 			{!isNotFound && <NavBar />}
-			<AnimatePresence mode="wait">
-				<motion.div
-					key={location.pathname}
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: -20 }}
-					transition={{ duration: 0.2 }}
-				>
-					<Outlet />
-				</motion.div>
-			</AnimatePresence>
+			<Outlet />
 			<Footer />
 		</div>
 	);

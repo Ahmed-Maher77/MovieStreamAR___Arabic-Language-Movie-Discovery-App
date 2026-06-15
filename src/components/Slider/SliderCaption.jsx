@@ -12,18 +12,18 @@ const containerVariants = {
 	animate: {
 		opacity: 1,
 		transition: {
-			staggerChildren: 0.2,
-			delayChildren: 0.2,
+			staggerChildren: 0.1,
+			delayChildren: 0.1,
 		},
 	},
 };
 
 const itemVariants = {
-	initial: { opacity: 0, y: 30 },
+	initial: { opacity: 0, y: 15 },
 	animate: { 
 		opacity: 1, 
 		y: 0, 
-		transition: { duration: 0.6, ease: "easeOut" } 
+		transition: { duration: 0.35, ease: "easeOut" } 
 	},
 };
 
