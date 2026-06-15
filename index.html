@@ -5,68 +5,120 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <!-- SEO Meta Tags -->
-        <title>MovieStreamAR | Movie Discovery App - Explore, Watch, and Enjoy Movies</title>
-        <meta name="title" content="MovieStreamAR | Arabic Movie Discovery Platform">
-        <meta
-            name="description"
-            content="Discover and explore a vast collection of movies. Get detailed information, reviews, trailers, and recommendations. Built with React, Redux, and Framer Motion for an enhanced user experience."
-        />
-        <meta
-            name="keywords"
-            content="movies, movie discovery, movie reviews, trailers, best movies, watch movies, film database, movie streaming"
-        />
+        <!-- ==================== Primary Meta Tags ==================== -->
+        <title>MovieStreamAR | منصة اكتشاف الأفلام والمسلسلات العربية - MovieStreamAR</title>
+        <meta name="title" content="MovieStreamAR | Arabic Movie & TV Series Discovery Platform" />
+        <meta name="description" content="MovieStreamAR is a modern bilingual Arabic/English movie and TV series discovery platform. Explore trending movies, upcoming releases, detailed film information, personalized watchlists, and similar recommendations. Built with React 19, Firebase, Redux Toolkit, and the TMDB API. Supports RTL, Google sign-in, and real-time Firestore sync." />
+        <meta name="keywords" content="movies, Arabic movies, movie discovery, TV series, trending movies, upcoming movies, film database, movie details, watchlist, TMDB, movie app, Arabic film platform, أفلام, مسلسلات, اكتشاف الأفلام, MovieStreamAR, movie search, film recommendations, bilingual movie app" />
         <meta name="author" content="Ahmed Maher Algohary" />
+        <meta name="application-name" content="MovieStreamAR" />
+        <meta name="theme-color" content="#0d0d0d" />
+        <meta name="color-scheme" content="dark" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="MovieStreamAR" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <!-- Open Graph Meta Tags (for Social Media Sharing) -->
-        <meta
-            property="og:title"
-            content="Movie Discovery App - Explore Movies and Series"
-        />
-        <meta
-            property="og:description"
-            content="Explore top-rated movies, watch trailers, and find your next favorite film. Built with modern web technologies."
-        />
-        <meta property="og:image" content="./src/assets/logo.png" />
-        <meta
-            property="og:url"
-            content="https://movie-discovery-app-gamma.vercel.app/"
-        />
+        <!-- ==================== Search Engine Meta Tags ==================== -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-image-preview:large" />
+        <meta name="bingbot" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="language" content="Arabic, English" />
+
+        <!-- ==================== Open Graph Meta Tags (Facebook, LinkedIn, WhatsApp) ==================== -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="MovieStreamAR" />
+        <meta property="og:title" content="MovieStreamAR | منصة اكتشاف الأفلام والمسلسلات - Movie Discovery Platform" />
+        <meta property="og:description" content="Explore trending movies, upcoming releases, and TV series in Arabic and English. Build your watchlist, get detailed insights, and discover your next favorite film with MovieStreamAR." />
+        <meta property="og:url" content="https://movie-discovery-app-gamma.vercel.app/" />
+        <meta property="og:image" content="https://movie-discovery-app-gamma.vercel.app/logo.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="MovieStreamAR Logo - Arabic Movie Discovery Platform" />
+        <meta property="og:locale" content="ar_AR" />
+        <meta property="og:locale:alternate" content="en_US" />
 
-        <!-- Twitter Card Meta Tags -->
+        <!-- ==================== Twitter Card Meta Tags ==================== -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="MovieStreamAR - Arabic Movie Discovery Platform"
-        />
-        <meta
-            name="twitter:description"
-            content="Discover new movies and series, watch trailers, and get personalized recommendations."
-        />
-        <meta name="twitter:image" content="./src/assets/logo.png" />
         <meta name="twitter:site" content="@AhmedMa77068093" />
+        <meta name="twitter:creator" content="@AhmedMa77068093" />
+        <meta name="twitter:title" content="MovieStreamAR | Arabic Movie & TV Series Discovery" />
+        <meta name="twitter:description" content="Discover trending movies, TV series, and build your personalized watchlist. Bilingual Arabic/English platform with Google sign-in and real-time sync." />
+        <meta name="twitter:image" content="https://movie-discovery-app-gamma.vercel.app/logo.png" />
+        <meta name="twitter:image:alt" content="MovieStreamAR Logo" />
 
-        <!-- Favicon -->
-        <link rel="icon" href="./src/assets/logo.png" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./src/assets/logo.png" />
+        <!-- ==================== Favicon & App Icons ==================== -->
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/logo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- Canonical URL (Helps with SEO) -->
-        <link
-            rel="canonical"
-            href="https://movie-discovery-app-gamma.vercel.app/"
-        />
+        <!-- ==================== Canonical URL ==================== -->
+        <link rel="canonical" href="https://movie-discovery-app-gamma.vercel.app/" />
 
-        <!-- Bootstrap Icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-        />
+        <!-- ==================== Preconnect & Resource Hints ==================== -->
+        <link rel="preconnect" href="https://api.themoviedb.org" />
+        <link rel="preconnect" href="https://image.tmdb.org" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://api.themoviedb.org" />
+        <link rel="dns-prefetch" href="https://image.tmdb.org" />
+        <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
 
-        <!-- Additional Meta Tags for Search Engines -->
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
+        <!-- ==================== Bootstrap Icons CDN ==================== -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+        <!-- ==================== JSON-LD Structured Data ==================== -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "MovieStreamAR",
+            "url": "https://movie-discovery-app-gamma.vercel.app/",
+            "author": {
+                "@type": "Person",
+                "name": "Ahmed Maher Algohary",
+                "url": "https://github.com/Ahmed-Maher77"
+            },
+            "description": "A modern bilingual (Arabic/English) movie and TV series discovery platform. Browse trending and upcoming films, search with shareable URLs, manage a personal watchlist with watched/unwatched tracking, and explore similar content.",
+            "applicationCategory": "Entertainment",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires modern browser with JavaScript enabled",
+            "inLanguage": ["ar", "en"],
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "featureList": [
+                "Browse trending and upcoming movies and TV series",
+                "Search with shareable URL parameters",
+                "Detailed movie/TV information with metadata",
+                "Personalized watchlist with watched/unwatched tracking",
+                "Similar movie and TV series recommendations",
+                "Google sign-in authentication",
+                "Bilingual Arabic/English interface with RTL support",
+                "Responsive design for mobile, tablet, and desktop"
+            ],
+            "screenshot": "https://movie-discovery-app-gamma.vercel.app/logo.png"
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://movie-discovery-app-gamma.vercel.app/" },
+                { "@type": "ListItem", "position": 2, "name": "Movies", "item": "https://movie-discovery-app-gamma.vercel.app/movies" },
+                { "@type": "ListItem", "position": 3, "name": "TV Series", "item": "https://movie-discovery-app-gamma.vercel.app/tv-series" },
+                { "@type": "ListItem", "position": 4, "name": "About Us", "item": "https://movie-discovery-app-gamma.vercel.app/about-us" }
+            ]
+        }
+        </script>
     </head>
     <body>
         <div id="root"></div>

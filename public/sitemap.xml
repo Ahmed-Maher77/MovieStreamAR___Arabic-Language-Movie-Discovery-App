@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/movies</loc>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/tv-series</loc>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/about-us</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/profile</loc>
+    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://movie-discovery-app-gamma.vercel.app/watchlist</loc>
+    <priority>0.3</priority>
+    <changefreq>always</changefreq>
+  </url>
+</urlset>
