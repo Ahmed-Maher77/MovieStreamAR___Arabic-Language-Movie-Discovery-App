@@ -20,32 +20,12 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		dispatch(setAuthLoading(true));
 
+		// Fallback for redirect results (e.g. mobile fallback or previous redirection)
 		getRedirectResult(auth)
 			.then((result) => {
 				if (result) {
 					const isRTL = i18n.language === "ar";
 					toast.success(i18n.t("login_success"), { rtl: isRTL });
-
-					const pendingRaw = sessionStorage.getItem("pendingMovie");
-					if (pendingRaw) {
-						sessionStorage.removeItem("pendingMovie");
-						const movie = JSON.parse(pendingRaw);
-						const movieData = {
-							id: String(movie.id),
-							title: movie.title,
-							poster_path: movie.poster_path || "",
-							isWatched: false,
-						};
-						dispatch(
-							addToWatchlist({
-								userId: result.user.uid,
-								movie: movieData,
-								name: result.user.displayName,
-								email: result.user.email,
-							})
-						).catch(() => {});
-						toast.success(i18n.t("added_to_watchlist"), { rtl: isRTL });
-					}
 				}
 			})
 			.catch(() => {
@@ -72,6 +52,33 @@ const AuthProvider = ({ children }) => {
 						email: user.email,
 					})
 				);
+
+				// Automatically add pending movie to watchlist if it exists in sessionStorage
+				const pendingRaw = sessionStorage.getItem("pendingMovie");
+				if (pendingRaw) {
+					sessionStorage.removeItem("pendingMovie");
+					try {
+						const movie = JSON.parse(pendingRaw);
+						const movieData = {
+							id: String(movie.id),
+							title: movie.title,
+							poster_path: movie.poster_path || "",
+							isWatched: false,
+						};
+						dispatch(
+							addToWatchlist({
+								userId: user.uid,
+								movie: movieData,
+								name: user.displayName,
+								email: user.email,
+							})
+						).catch(() => {});
+						const isRTL = i18n.language === "ar";
+						toast.success(i18n.t("added_to_watchlist"), { rtl: isRTL });
+					} catch (e) {
+						console.error("Error parsing pending movie:", e);
+					}
+				}
 			} else {
 				dispatch(setIsAuth(false));
 				dispatch(setUserData(null));

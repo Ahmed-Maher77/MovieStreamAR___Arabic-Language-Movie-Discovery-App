@@ -45,6 +45,11 @@ const NavBar = memo(() => {
 		}
 	};
 
+	// Close menu on route change
+	useEffect(() => {
+		closeMenu();
+	}, [pathname]);
+
 	// Close menu on logo click
 	const handleLogoClick = () => {
 		setIsMenuOpen(false);
