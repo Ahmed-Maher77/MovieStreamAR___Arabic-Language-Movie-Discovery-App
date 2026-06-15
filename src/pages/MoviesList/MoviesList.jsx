@@ -24,6 +24,16 @@ const MoviesList = () => {
 	const page = parseInt(searchParams.get("page"), 10) || 1;
 	const urlSearch = searchParams.get("search") || "";
 
+	// Fetch all movies (when not searching)
+	const { data: allMovies, isLoading, error } = useFetchAllMovies(page);
+
+	// Fetch searched movies (if search query is present)
+	const {
+		data: searchedMovies,
+		isLoading: isSearching,
+		error: searchError,
+	} = useSearchMovies(urlSearch);
+
 	// Log navigation for debugging
 	useEffect(() => {
 		console.log(`[MoviesList] Mounted - page: ${page}, search: "${urlSearch}"`);
@@ -35,23 +45,6 @@ const MoviesList = () => {
 			console.log(`[MoviesList] Data loaded - ${allMovies.results?.length || 0} movies, page ${page}`);
 		}
 	}, [isLoading, error, allMovies, page]);
-
-	// Sync URL search param -> Redux search state (keeps Navbar input in sync)
-	useEffect(() => {
-		if (urlSearch !== reduxSearchQuery) {
-			dispatch(setSearchByValue(urlSearch));
-		}
-	}, [urlSearch, reduxSearchQuery, dispatch]);
-
-	// Fetch all movies (when not searching)
-	const { data: allMovies, isLoading, error } = useFetchAllMovies(page);
-
-	// Fetch searched movies (if search query is present)
-	const {
-		data: searchedMovies,
-		isLoading: isSearching,
-		error: searchError,
-	} = useSearchMovies(urlSearch);
 
 	// Determine which movies to display
 	const isSearchingMode = urlSearch.length > 0;

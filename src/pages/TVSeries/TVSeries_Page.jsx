@@ -24,18 +24,6 @@ const TVSeries_Page = () => {
 	const page = parseInt(searchParams.get("page"), 10) || 1;
 	const urlSearch = searchParams.get("search") || "";
 
-	// Log navigation for debugging
-	useEffect(() => {
-		console.log(`[TVSeries] Mounted - page: ${page}, search: "${urlSearch}"`);
-		return () => console.log("[TVSeries] Unmounted");
-	}, []);
-
-	useEffect(() => {
-		if (!isLoading && !error && allSeries) {
-			console.log(`[TVSeries] Data loaded - ${allSeries.results?.length || 0} series, page ${page}`);
-		}
-	}, [isLoading, error, allSeries, page]);
-
 	// Sync URL search param -> Redux search state (keeps Navbar input in sync)
 	useEffect(() => {
 		if (urlSearch !== reduxSearchQuery) {
@@ -52,6 +40,18 @@ const TVSeries_Page = () => {
 		isLoading: isSearching,
 		error: searchError,
 	} = useSearchTvSeries(urlSearch);
+
+	// Log navigation for debugging
+	useEffect(() => {
+		console.log(`[TVSeries] Mounted - page: ${page}, search: "${urlSearch}"`);
+		return () => console.log("[TVSeries] Unmounted");
+	}, []);
+
+	useEffect(() => {
+		if (!isLoading && !error && allSeries) {
+			console.log(`[TVSeries] Data loaded - ${allSeries.results?.length || 0} series, page ${page}`);
+		}
+	}, [isLoading, error, allSeries, page]);
 
 	// Determine which tv series to display
 	const isSearchingMode = urlSearch.length > 0;
