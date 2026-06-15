@@ -13,6 +13,7 @@ import "./App.css";
 import AuthProvider from "./common/Authentication/AuthProvider";
 import ToastWrapper from "./components/ToastWrapper/ToastWrapper";
 import TVSeries_Page from "./pages/TVSeries/TVSeries_Page.jsx";
+import "./i18n";
 
 // Lazy-loaded pages to improve performance
 const MoviesList = React.lazy(() => import("./pages/MoviesList/MoviesList"));
@@ -84,6 +85,7 @@ function App() {
 						},
 						{
 							path: "*",
+							id: "notFound",
 							element: (
 								<Suspense fallback={<MainLoader />}>
 									<NotFound />

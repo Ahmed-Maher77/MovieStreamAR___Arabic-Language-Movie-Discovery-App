@@ -108,6 +108,15 @@ body {
 .page-height {
 	min-height: calc(100vh - 65px);
 }
+.profile-actions button {
+	width: 100% !important;
+}
+
+/* Border */
+
+.main-border {
+	border: 2px solid #c59c88;
+}
 
 /* Cursor */
 .cursor-pointer {
