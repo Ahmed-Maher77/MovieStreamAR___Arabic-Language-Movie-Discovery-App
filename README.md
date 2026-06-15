@@ -11,7 +11,7 @@ A modern bilingual (Arabic/English) movie and TV series discovery web app. Brows
 
 ## 👀 Website Preview:
 <a href="https://movie-discovery-app-gamma.vercel.app" title="demo">
-  <img src="uploaded-img-on-github-readme" alt="website preview - Demo - UI Mockup" width="400">
+  <img src="https://github.com/user-attachments/assets/3df5deff-bb65-411c-a3d9-b05de7e2019e" alt="website preview - Demo - UI Mockup" width="400">
 </a>
 
 ---
