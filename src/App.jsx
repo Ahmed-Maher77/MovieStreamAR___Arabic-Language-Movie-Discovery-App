@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import AuthProvider from "./common/Authentication/AuthProvider";
 import ToastWrapper from "./components/ToastWrapper/ToastWrapper";
-import TVSeries_Page from "./pages/TVSeries/TVSeries_Page.jsx";
 import "./i18n";
 
 // Lazy-loaded pages to improve performance
@@ -20,6 +19,7 @@ const MoviesDetails = React.lazy(() => import("./pages/MoviesDetails/MoviesDetai
 const Watchlist = React.lazy(() => import("./pages/Watchlist/Watchlist"));
 const NotFound = React.lazy(() => import("./pages/NotFound.jsx"));
 const AboutUs = React.lazy(() => import("./pages/AboutUs/AboutUs.jsx"));
+const TVSeries_Page = React.lazy(() => import("./pages/TVSeries/TVSeries_Page.jsx"));
 
 
 function App() {

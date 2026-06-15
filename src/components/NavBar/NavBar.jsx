@@ -25,6 +25,7 @@ const NavBar = memo(() => {
 	const [showSearch, setShowSearch] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const isInMoviesPage = pathname === "/movies";
+	const isInTvSeriesPage = pathname === "/tv-series";
 	const closeBtnRef = useRef();
 	const navigate = useNavigate();
 
@@ -121,7 +122,7 @@ const NavBar = memo(() => {
 
 				{/* Search Bar */}
 				<SearchBar
-					value={isInMoviesPage ? searchByValue : searchTvSeriesByValue}
+					value={isInMoviesPage ? searchByValue : isInTvSeriesPage ? searchTvSeriesByValue : ""}
 					onChange={handleSearch}
 					onClose={() => setShowSearch(false)}
 					show={showSearch}

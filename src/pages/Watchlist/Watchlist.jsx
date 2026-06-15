@@ -56,8 +56,8 @@ const Watchlist = () => {
 		<motion.div
 			className="watchlist-page"
 			variants={moviesDetailsPageVariants}
-			initial="hidden"
-			animate="visible"
+			initial="initial"
+			animate="animate"
 			exit="exit"
 		>
 			<div className="container pb-4">
