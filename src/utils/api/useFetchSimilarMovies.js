@@ -42,7 +42,7 @@ function useFetchSimilarMovies(dataType, page, id, limit = null) {
         queryKey: ["similar_movies", page, id, limit, langParam],
         queryFn: fetchMovies,
         staleTime: 60000 * 10, // 10 minute stale time
-        keepPreviousData: true, // Keeps old data while fetching new
+        placeholderData: (prev) => prev, // Keeps old data while fetching new (React Query v5 standard)
         enabled: !!id && !!page && page >= 1, // Only run if id and valid page are provided
     });
 

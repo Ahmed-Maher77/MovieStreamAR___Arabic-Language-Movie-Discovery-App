@@ -25,11 +25,12 @@ function useFetchTrendingMovies(page) {
         queryKey: ["trending_movies", page, langParam],
         queryFn: fetchMovies,
         staleTime: 60000 * 10, // 10 minute stale time
-        keepPreviousData: true, // Keeps old data while fetching new
+        placeholderData: (prev) => prev, // Keeps old data while fetching new (React Query v5 standard)
+        enabled: !!page && page >= 1, // Only run query if page is valid
     });
     
     if (!page || page < 1) {
-        return;
+        return { data: null, isLoading: false, error: "Invalid page number" };
     }
 
     return { data, isLoading, error: error?.message };

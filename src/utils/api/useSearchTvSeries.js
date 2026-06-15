@@ -1,16 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useSelector } from "react-redux";
-
 import { useTranslation } from "react-i18next";
 
-function useSearchTvSeries() {
+function useSearchTvSeries(tvSeriesName) {
     const { i18n } = useTranslation();
     const langParam = i18n.language === "ar" ? "ar" : "en-US";
 	const apikey = import.meta.env.VITE_API_KEY;
-	const tvSeriesName = useSelector(
-		(state) => state.search_tvseries.searchByValue
-	);
 
 	const fetchTvSeries = async () => {
 		if (!tvSeriesName) return null;
@@ -34,7 +29,7 @@ function useSearchTvSeries() {
 		queryFn: fetchTvSeries,
 		enabled: !!tvSeriesName, // Only run query when there's a search term
 		staleTime: 60000 * 10, // 10 minute stale time
-		keepPreviousData: true, // Keeps old data while fetching new
+		placeholderData: (prev) => prev, // Keeps old data while fetching new (React Query v5 standard)
 	});
 
 	return { data, isLoading, error: error?.message };

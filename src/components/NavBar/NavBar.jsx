@@ -54,16 +54,16 @@ const NavBar = memo(() => {
 	const handleSearch = useCallback(
 		(e) => {
 			const searchValue = e.target.value;
-			if (isInMoviesPage) {
+			if (pathname === "/movies") {
 				dispatch(setSearchByValue(searchValue));
-			} else {
+				navigate(`/movies?search=${encodeURIComponent(searchValue)}`, { replace: true });
+			} else if (pathname === "/tv-series") {
 				dispatch(setSearchTvSeriesByValue(searchValue));
-			}
-			if (searchValue.length > 0 && pathname !== "/movies" && pathname !== "/tv-series") {
-				// Use setTimeout to ensure Redux state is updated before navigation
-				setTimeout(() => {
-					navigate("/movies");
-				}, 0);
+				navigate(`/tv-series?search=${encodeURIComponent(searchValue)}`, { replace: true });
+			} else {
+				// From other pages, navigate to /movies and update movies search state
+				dispatch(setSearchByValue(searchValue));
+				navigate(`/movies?search=${encodeURIComponent(searchValue)}`);
 			}
 		},
 		[dispatch, navigate, pathname]

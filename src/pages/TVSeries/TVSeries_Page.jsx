@@ -21,45 +21,15 @@ const TVSeries_Page = () => {
 
 	// Query params for pagination and search
 	const [searchParams, setSearchParams] = useSearchParams();
-	const initialPage = parseInt(searchParams.get("page"), 10) || 1;
-	const initialSearch = searchParams.get("search") || "";
-	const [page, setPage] = useState(initialPage);
+	const page = parseInt(searchParams.get("page"), 10) || 1;
+	const urlSearch = searchParams.get("search") || "";
 
-	// Keep Redux search in sync with URL
+	// Sync URL search param -> Redux search state (keeps Navbar input in sync)
 	useEffect(() => {
-		if (reduxSearchQuery !== initialSearch) {
-			dispatch(setSearchTvSeriesByValue(initialSearch));
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [initialSearch]);
-
-	// Keep URL in sync with page and search
-	useEffect(() => {
-		const params = new URLSearchParams(searchParams);
-		if (page !== initialPage) params.set("page", page);
-		if (reduxSearchQuery !== initialSearch)
-			params.set("search", reduxSearchQuery);
-		if (reduxSearchQuery === "") params.delete("search");
-		if (page === 1) params.delete("page");
-		setSearchParams(params);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, reduxSearchQuery]);
-
-	// Update page/search state if URL changes (e.g. browser navigation)
-	useEffect(() => {
-		const urlPage = parseInt(searchParams.get("page"), 10) || 1;
-		const urlSearch = searchParams.get("search") || "";
-		if (urlPage !== page) setPage(urlPage);
-		if (urlSearch !== reduxSearchQuery)
+		if (urlSearch !== reduxSearchQuery) {
 			dispatch(setSearchTvSeriesByValue(urlSearch));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [searchParams]);
-
-	// When search changes, reset page to 1
-	useEffect(() => {
-		if (page !== 1 && reduxSearchQuery !== initialSearch) setPage(1);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [reduxSearchQuery]);
+		}
+	}, [urlSearch, reduxSearchQuery, dispatch]);
 
 	// Fetch all tv series (when not searching)
 	const { data: allSeries, isLoading, error } = useFetchTvSeries(page);
@@ -69,10 +39,10 @@ const TVSeries_Page = () => {
 		data: searchedTvSeries,
 		isLoading: isSearching,
 		error: searchError,
-	} = useSearchTvSeries(reduxSearchQuery);
+	} = useSearchTvSeries(urlSearch);
 
 	// Determine which tv series to display
-	const isSearchingMode = reduxSearchQuery.length > 0;
+	const isSearchingMode = urlSearch.length > 0;
 	const tvSeriesToDisplay = useMemo(
 		() => (isSearchingMode ? searchedTvSeries?.results : allSeries?.results),
 		[isSearchingMode, searchedTvSeries, allSeries]
@@ -86,7 +56,18 @@ const TVSeries_Page = () => {
 	const startPage = Math.max(1, page - Math.floor(pageRange / 2));
 	const endPage = Math.min(totalPages, startPage + pageRange - 1);
 
-	const handleSetPage = useCallback((newPage) => setPage(newPage), []);
+	const handleSetPage = useCallback(
+		(newPage) => {
+			const params = new URLSearchParams(searchParams);
+			if (newPage > 1) {
+				params.set("page", newPage);
+			} else {
+				params.delete("page");
+			}
+			setSearchParams(params);
+		},
+		[searchParams, setSearchParams]
+	);
 
 	const isDataLoading = isSearchingMode ? isSearching : isLoading;
 	const hasError = isSearchingMode ? searchError : error;
