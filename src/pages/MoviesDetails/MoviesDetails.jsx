@@ -30,6 +30,15 @@ const MoviesDetails = () => {
 
 	const { t } = useTranslation();
 
+	const title = movieData?.title || movieData?.name || "";
+
+	useEffect(() => {
+		if (title) {
+			document.title = `${title} - MovieStreamAR`;
+		}
+		return () => { document.title = "MovieStreamAR"; };
+	}, [title]);
+
 	// Loading State
 	if (isLoading) {
 		return (
@@ -70,12 +79,6 @@ const MoviesDetails = () => {
 		spoken_languages = [],
 		overview,
 	} = movieData;
-    const title = movieData.title || movieData.name;
-
-	useEffect(() => {
-		document.title = `${title} - MovieStreamAR`;
-		return () => { document.title = "MovieStreamAR"; };
-	}, [title]);
 
 	// Formatters
 	const formattedGenres = formatList(genres, "name");
