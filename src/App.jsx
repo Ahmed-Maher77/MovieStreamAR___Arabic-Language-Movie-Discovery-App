@@ -1,22 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./utils/redux-toolkit/store";
 import { Provider } from "react-redux";
-import { useMemo } from "react";
+import React, { Suspense, useMemo } from "react";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import MainLoader from "./components/Loader/MainLoader";
 import RequireAuth from "./common/Authentication/RequireAuth.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
-import MoviesList from "./pages/MoviesList/MoviesList";
-import MoviesDetails from "./pages/MoviesDetails/MoviesDetails";
-import Watchlist from "./pages/Watchlist/Watchlist";
-import NotFound from "./pages/NotFound.jsx";
-import AboutUs from "./pages/AboutUs/AboutUs.jsx";
-import TVSeries_Page from "./pages/TVSeries/TVSeries_Page.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import AuthProvider from "./common/Authentication/AuthProvider";
 import ToastWrapper from "./components/ToastWrapper/ToastWrapper";
 import "./i18n";
+
+// Lazy-loaded pages to improve performance
+const MoviesList = React.lazy(() => import("./pages/MoviesList/MoviesList"));
+const MoviesDetails = React.lazy(() => import("./pages/MoviesDetails/MoviesDetails"));
+const Watchlist = React.lazy(() => import("./pages/Watchlist/Watchlist"));
+const NotFound = React.lazy(() => import("./pages/NotFound.jsx"));
+const AboutUs = React.lazy(() => import("./pages/AboutUs/AboutUs.jsx"));
+const TVSeries_Page = React.lazy(() => import("./pages/TVSeries/TVSeries_Page.jsx"));
 
 
 function App() {
@@ -29,36 +32,72 @@ function App() {
 						{ path: "/", element: <Home /> },
 						{
 							path: "/movies",
-							element: <MoviesList />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<MoviesList />
+								</Suspense>
+							),
 						},
 						{
 							path: "/movies/:id",
-							element: <MoviesDetails />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<MoviesDetails />
+								</Suspense>
+							),
 						},
 						{
 							path: "/tv-series/:id",
-							element: <MoviesDetails />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<MoviesDetails />
+								</Suspense>
+							),
 						},
 						{
 							path: "/tv-series", 
-							element: <TVSeries_Page />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<TVSeries_Page />
+								</Suspense>
+							),
 						},
 						{
 							path: "/profile",
-							element: <RequireAuth><Profile /></RequireAuth>,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<RequireAuth>
+										<Profile />
+									</RequireAuth>
+								</Suspense>
+							),
 						},
 						{
 							path: "/watchlist",
-							element: <RequireAuth><Watchlist /></RequireAuth>,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<RequireAuth>
+										<Watchlist />
+									</RequireAuth>
+								</Suspense>
+							),
 						},
 						{
 							path: "/about-us",
-							element: <AboutUs />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<AboutUs />
+								</Suspense>
+							),
 						},
 						{
 							path: "*",
 							id: "notFound",
-							element: <NotFound />,
+							element: (
+								<Suspense fallback={<MainLoader />}>
+									<NotFound />
+								</Suspense>
+							),
 						},
 					],
 				},
