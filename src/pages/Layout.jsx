@@ -13,11 +13,6 @@ const Layout = () => {
 	const matches = useMatches();
 	const isNotFound = matches.some((m) => m.id === "notFound");
 
-	// Log navigation for debugging empty page issue
-	useEffect(() => {
-		console.log(`[Nav] Route changed to: ${location.pathname}${location.search} at ${new Date().toISOString()}`);
-	}, [location]);
-
 	const handleResize = useCallback(() => {
 		dispatch(setIsLargeScreen(window.innerWidth > 991));
 	}, [dispatch]);

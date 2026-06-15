@@ -34,18 +34,6 @@ const MoviesList = () => {
 		error: searchError,
 	} = useSearchMovies(urlSearch);
 
-	// Log navigation for debugging
-	useEffect(() => {
-		console.log(`[MoviesList] Mounted - page: ${page}, search: "${urlSearch}"`);
-		return () => console.log("[MoviesList] Unmounted");
-	}, []);
-
-	useEffect(() => {
-		if (!isLoading && !error && allMovies) {
-			console.log(`[MoviesList] Data loaded - ${allMovies.results?.length || 0} movies, page ${page}`);
-		}
-	}, [isLoading, error, allMovies, page]);
-
 	// Determine which movies to display
 	const isSearchingMode = urlSearch.length > 0;
 	const moviesToDisplay = useMemo(

@@ -41,18 +41,6 @@ const TVSeries_Page = () => {
 		error: searchError,
 	} = useSearchTvSeries(urlSearch);
 
-	// Log navigation for debugging
-	useEffect(() => {
-		console.log(`[TVSeries] Mounted - page: ${page}, search: "${urlSearch}"`);
-		return () => console.log("[TVSeries] Unmounted");
-	}, []);
-
-	useEffect(() => {
-		if (!isLoading && !error && allSeries) {
-			console.log(`[TVSeries] Data loaded - ${allSeries.results?.length || 0} series, page ${page}`);
-		}
-	}, [isLoading, error, allSeries, page]);
-
 	// Determine which tv series to display
 	const isSearchingMode = urlSearch.length > 0;
 	const tvSeriesToDisplay = useMemo(

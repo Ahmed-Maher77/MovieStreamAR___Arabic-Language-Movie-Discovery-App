@@ -15,7 +15,7 @@ const NotFound = () => {
 
                 {/* Go Back Button */}
 				<button
-					className="btn btn-main px-4 py-2 rounded-5 mt-2 d-flex gap-3 fs-5 mx-auto align-items-center w-100"
+					className="btn btn-main px-4 py-2 rounded-5 mt-2 d-flex gap-3 fs-5 mx-auto align-items-center"
 					onClick={() => navigate("/")}
 					aria-label={t("back_to_home")}
 				>
